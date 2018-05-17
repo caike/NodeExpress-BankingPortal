@@ -1,0 +1,103 @@
+<%- include('header'); -%>
+
+<h1>Checking</h1>
+<div>
+    <p>Transactions</p>
+    <table class="transactions">
+        <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Amount</th>
+        </tr>
+        <% checking.forEach( transaction => { %>
+            <tr>
+                <td>
+                    <%= transaction.date %>
+                </td>
+                <td>
+                    <%= transaction.type %>
+                </td>
+                <td>
+                    <%= transaction.description %>
+                </td>
+                <td>
+                    <%= transaction.status %>
+                </td>
+                <td>
+                    <%= transaction.amount %>
+                </td>
+            </tr>
+            <% }); %>
+    </table>
+</div>
+
+<h1>Savings</h1>
+<div>
+    <p>Transactions</p>
+    <table class="transactions">
+        <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Amount</th>
+        </tr>
+        <% savings.forEach( transaction => { %>
+            <tr>
+                <td>
+                    <%= transaction.date %>
+                </td>
+                <td>
+                    <%= transaction.type %>
+                </td>
+                <td>
+                    <%= transaction.description %>
+                </td>
+                <td>
+                    <%= transaction.status %>
+                </td>
+                <td>
+                    <%= transaction.amount %>
+                </td>
+            </tr>
+            <% }); %>
+    </table>
+</div>
+
+<h1>Credit Cards</h1>
+<div>
+    <p>Transactions</p>
+    <table class="transactions">
+        <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Amount</th>
+        </tr>
+        <% card.forEach( transaction => { %>
+            <tr>
+                <td>
+                    <%= transaction.date %>
+                </td>
+                <td>
+                    <%= transaction.type %>
+                </td>
+                <td>
+                    <%= transaction.description %>
+                </td>
+                <td>
+                    <%= transaction.status %>
+                </td>
+                <td>
+                    <%= transaction.amount %>
+                </td>
+            </tr>
+            <% }); %>
+    </table>
+</div>
+
+
+<%- include('footer'); -%>
