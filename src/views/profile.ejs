@@ -1,16 +1,17 @@
 <%- include('header'); -%>
 
-<div>
-    <p>Profile</p>
-    <div>
-        <%= details.name %><br>
-        <%= details.username %><br>
-        <%= details.phone %><br>
-        <%= details.email %><br>
-        <%= details.address %><br>
-    </div>
-</div>
+  <h1>Profile</h1>
 
+  <div>
+    <%= user.name %><br>
+    <%= user.username %><br>
+    <%= user.phone %><br>
+    <%= user.email %><br>
+    <%= user.address %><br>
+  </div>
+
+  <br>
+
+  <a href="/">Back to Accounts Summary</a>
+  
 <%- include('footer'); -%>
-
-
