@@ -4,6 +4,10 @@ body {
   margin: 0 auto;
 }
 
+th {
+  text-align: left;
+}
+
 .transactions  {
   border-spacing: 2px;
   border-collapse: separate;
@@ -11,17 +15,17 @@ body {
 }
 
 .transactions tr:nth-child(odd) {
-  background-color: #ccc;
+  background-color: #CCCCCC;
 }
 
 .transactions td {
-    padding: 5px 0 0 5px;
-}
-
-th {
-  text-align: left;
+  padding: 5px 0 0 5px;
 }
 
 .right-aligned {
   margin-left: 750px;
+}
+
+.error {
+  color: #FF0000;
 }

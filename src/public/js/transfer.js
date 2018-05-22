@@ -2,10 +2,6 @@ let from = document.querySelector('#from');
 let to = document.querySelector('#to');
 let transferForm = document.querySelector('#transferForm');
 
-to.addEventListener("change", validate);
-from.addEventListener("change", validate);
-transferForm.addEventListener('submit', validate)
-
 function validate(evt){
   evt.preventDefault();
   document.querySelector('.error').innerHTML = '';
@@ -15,3 +11,7 @@ function validate(evt){
     transferForm.submit();
   }
 }
+
+to.addEventListener("change", validate);
+from.addEventListener("change", validate);
+transferForm.addEventListener('submit', validate)

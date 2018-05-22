@@ -20,10 +20,10 @@ let savings = accounts.savings;
 let checking = accounts.checking;
 let credit = accounts.credit;
 
-app.get("/", (req, res) => res.render("index", { title: "Index", account: accounts }));
-app.get("/savings", (req, res) => res.render("account", { title: "Savings", account: savings }));
-app.get("/checking", (req, res) => res.render("account", { title: "Checking", account: checking }));
-app.get("/credit", (req, res) => res.render("account", { title: "Credit Card", account: credit }));
+app.get("/", (req, res) => res.render("index", { title: "Index", accounts: accounts }));
+app.get("/savings", (req, res) => res.render("account", { title: savings.nickname, account: savings }));
+app.get("/checking", (req, res) => res.render("account", { title: checking.nickname, account: checking }));
+app.get("/credit", (req, res) => res.render("account", { title: credit.nickname, account: credit }));
 app.get("/profile", (req, res) => res.render("profile", { title: "Profile", user: users[0] }));
 
 app.get("/transfer", (req, res) =>  res.render("transfer", { title: "Transfer", msg: req.query.msg }));

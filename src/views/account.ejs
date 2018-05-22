@@ -1,5 +1,5 @@
 <%- include('header'); -%>
-<%- include('transactions', {title: title, transactions: account.transactions}); %>
+<%- include('transactions', {title: account.nickname, transactions: account.transactions}); %>
 <br>
 <a href="/">Back to Accounts Summary</a>
 <%- include('footer'); -%>

@@ -3,24 +3,10 @@
 <a class="right-aligned" href="/profile">Profile</a>
 <div class="accounts">
 
-  <%- include('summary', {title: 'Checking', route: '/checking', account: account.checking}); %>
-  <%- include('summary', {title: 'Savings', route: '/savings', account: account.savings}); %>
+  <%- include('summary', { account: accounts.checking }); %>
+  <%- include('summary', { account: accounts.savings }); %>
+  <%- include('summary', { account: accounts.credit }); %>
 
-  <h1>Credit Card</h1>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Account Number</th>
-      <th>Current Balance</th>
-      <th>Available Balance</th>
-    </tr>
-    <tr>
-      <td><a href="/credit">Credit Card</a></td>
-      <td><%= account.credit.account_number %></td>
-      <td>$<%= account.credit.balance %></td>
-      <td>$<%= account.credit.available %></td>
-    </tr>
-  </table>
   <br>
   <a href="/transfer">Transfer</a>
 </div>

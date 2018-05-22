@@ -1,5 +1,7 @@
 {  
-   "savings":{
+   "savings": {
+      "unique_name": "savings",
+      "nickname": "Savings",
       "account_number": "xxxxx1212",
       "transactions":[  
          {  
@@ -20,7 +22,9 @@
       "prior_balance":  33553.21,
       "balance": 34590.00 
    },
-   "checking":{
+   "checking": {
+      "unique_name": "checking",
+      "nickname": "Checking",
       "account_number": "xxxxx1213",
       "transactions":[  
          {  
@@ -56,6 +60,8 @@
       "balance": 1245.30
    },
    "credit":{
+      "unique_name": "credit",
+      "nickname": "Credit Card",
       "account_number": "xxxxxxxxxxxx9810",
       "transactions":[
          {  
