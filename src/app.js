@@ -1,4 +1,3 @@
-
 // 1.1
 const fs = require('fs');
 const path = require("path");
@@ -63,28 +62,28 @@ app.get("/profile", (req, res) => res.render("profile", { title: "Profile", user
 // 3.2
 app.get("/transfer", (req, res) =>  res.render("transfer", { title: "Transfer", msg: req.query.msg }));
 
-// 3.3 - 3.5 in views/transfer.ejs
+// 3.3 in views/transfer.ejs
 
-// 3.6
+// 3.4
 app.post('/transfer', (req, res) => {
-  // 3.7
+  // 3.5
   let fromNew = accounts[req.body.from].balance - req.body.amount;
   let toNew = parseInt(accounts[req.body.to].balance) + parseInt(req.body.amount);
   
-  // 3.8
+  // 3.6
   accounts[req.body.from].balance = fromNew;
   accounts[req.body.to].balance = toNew;
   
-  // 3.9
+  // 3.7
   let accountsJSON = JSON.stringify(accounts)
 
-  // 3.10
+  // 3.8
   fs.writeFileSync(path.join(__dirname, "json", "accounts.json"),accountsJSON, 'utf8');
   
-  // 3.11
+  // 3.9
   let string = encodeURIComponent("Transfer Completed");
 
-  // 3.12
+  // 3.10
   res.redirect('/transfer?msg=' + string);
 });
 
