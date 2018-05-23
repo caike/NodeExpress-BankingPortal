@@ -1,0 +1,21 @@
+<%- include('header'); -%>
+
+<h1><%= title %></h1>
+
+<span class="msg"><%= msg %></span>
+<span class="error"></span>
+
+<!-- 4.1 -->
+<p>Current Balance: $<%= account.balance %></p>
+<form id="paymentForm" action="/payment" method="POST">
+  <label for="amount">Payment: <input type="number" name="amount" id="amount" required placeholder="amount"></label>
+  <button type="submit">Submit Payment</button>
+</form>
+
+<br>
+
+<a href="/">Back to Accounts Summary</a>
+
+<script src="js/transfer.js"></script>
+
+<%- include('footer'); -%>

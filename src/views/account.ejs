@@ -2,6 +2,12 @@
 
 <!-- 2.9 -->
 <%- include('transactions', { account: account }); %>
-<br>
-<a href="/">Back to Accounts Summary</a>
+
+<!-- 4.1 -->
+<% if (account.unique_name == 'credit') { %>
+  <br><a href="/payment">Make a Payment</a>
+<% } %>
+
+
+<br><a href="/">Back to Accounts Summary</a>
 <%- include('footer'); -%>

@@ -75,10 +75,10 @@ app.post('/transfer', (req, res) => {
   accounts[req.body.to].balance = toNew;
   
   // 3.7
-  let accountsJSON = JSON.stringify(accounts)
+  let accountsJSON = JSON.stringify(accounts, null, 4)
 
   // 3.8
-  fs.writeFileSync(path.join(__dirname, "json", "accounts.json"),accountsJSON, 'utf8');
+  fs.writeFileSync(path.join(__dirname, "json", "accounts.json"), accountsJSON, 'utf8');
   
   // 3.9
   let string = encodeURIComponent("Transfer Completed");
@@ -86,6 +86,31 @@ app.post('/transfer', (req, res) => {
   // 3.10
   res.redirect('/transfer?msg=' + string);
 });
+
+// 4.1 in views/payment.ejs
+
+// 4.2
+app.get("/payment", (req, res) =>  res.render("payment", { title: "Make a Payment", account: credit, msg: req.query.msg }));
+
+// 4.3
+app.post('/payment', (req, res) => {
+  // 4.4
+  accounts['credit'].balance -= req.body.amount;
+  accounts['credit'].available = parseInt(accounts['credit'].available) + parseInt(req.body.amount);
+
+  // 4.5
+  let accountsJSON = JSON.stringify(accounts, null, 4)
+
+  // 4.6
+  fs.writeFileSync(path.join(__dirname, "json", "accounts.json"), accountsJSON, 'utf8');
+  
+  // 4.7
+  let string = encodeURIComponent("Payment Successful");
+
+  // 4.8
+  res.redirect('/payment?msg=' + string);
+});
+
 
 // 1.7
 app.listen("3000", () => console.log("PS Project Running on port 3000!"));
