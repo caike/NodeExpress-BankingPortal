@@ -1,4 +1,4 @@
-<h1><%= title %></h1>
+<h1><%= account.nickname %></h1>
 
 <div>
   <table class="transactions">
@@ -9,7 +9,7 @@
       <th>Status</th>
       <th>Amount</th>
     </tr>
-    <% transactions.forEach( transaction => { %>
+    <% account.transactions.forEach( transaction => { %>
       <tr>
         <td><%= transaction.date %></td>
         <td><%= transaction.type %></td>
@@ -18,5 +18,8 @@
         <td>$<%= transaction.amount %></td>
       </tr>
     <% }); %>
+
+
+
   </table>
 </div>
