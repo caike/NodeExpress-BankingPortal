@@ -1,14 +1,18 @@
+<!-- 1.6 -->
 <%- include('header'); -%>
+  <!-- 1.6.1 -->
+  <a class="right-aligned" href="/profile">Profile</a>
 
-<a class="right-aligned" href="/profile">Profile</a>
-<div class="accounts">
+  <!-- 1.6.2 -->
+  <!-- <%= title %> -->
 
+  <!-- 2.6 -->
   <%- include('summary', { account: accounts.checking }); %>
   <%- include('summary', { account: accounts.savings }); %>
   <%- include('summary', { account: accounts.credit }); %>
 
-  <br>
-  <a href="/transfer">Transfer</a>
-</div>
+  <!-- 1.6.3 -->
+  <br><a href="/transfer">Transfer</a>
 
+<!-- 1.6.4 -->
 <%- include('footer'); -%>
