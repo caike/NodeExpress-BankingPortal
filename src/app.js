@@ -37,7 +37,7 @@ let credit = accounts.credit;
 // 1.6 in views/index.ejs
 
 // 2.4
-app.get("/", (req, res) => res.render("index", { title: "Index", accounts: accounts }));
+app.get("/", (req, res) => res.render("index", { title: "Accounts Summary", accounts: accounts }));
 
 
 // 2.5
