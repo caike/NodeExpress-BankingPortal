@@ -1,13 +1,16 @@
 // 1.1
+// Require Built-in Libraries
+// @app-require-built-ins In app.js, require the built-in library `fs` and store a reference to it in a `const` called `fs`. Next, require the built-in library `path` and store a reference to it in a `const` called `path`.
 const fs = require('fs');
 const path = require("path");
 
 // 1.2
+// @app-require-express In app.js, require the the express framework and store a reference to it in a `const` called `express`. Next, call the express function and store it in a `const` called `app`.
 const express = require("express");
-// 1.2.1
 const app = express();
 
 // 1.3
+// @app-set-views-dir-engine Still in app.js, use the `set` function of your newly created `app` const to configure the directory where our `views` can be found. Using the same `set` function, set the `view engine` to `ejs`.
 app.set("views", path.join(__dirname, "views"));
 // 1.3.1
 app.set("view engine", "ejs");
@@ -16,6 +19,9 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
 // 1.4
+// @app-use-static-dir All of our CSS/JS for the client-side is found in the `public` directory. We need to point express to this directory. 
+// Still in app.js, call the `use` function of `app` and with the `express.static()` function as the only parameter. The parameter `express.static()` of will be a call to the `path.join()` function with the required path info. 
+// Hint: __dirname
 app.use(express.static(path.join(__dirname, "public")));
 
 // 2.1
