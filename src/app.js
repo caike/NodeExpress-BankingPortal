@@ -1,27 +1,19 @@
 // 1.1
-// Require Built-in Libraries
-// @app-require-built-ins In app.js, require the built-in library `fs` and store a reference to it in a `const` called `fs`. Next, require the built-in library `path` and store a reference to it in a `const` called `path`.
 const fs = require('fs');
 const path = require("path");
 
 // 1.2
-// @app-require-express In app.js, require the the express framework and store a reference to it in a `const` called `express`. Next, call the express function and store it in a `const` called `app`.
 const express = require("express");
 const app = express();
 
 // 1.3
-// @app-set-views-dir-engine Still in app.js, use the `set` function of your newly created `app` const to configure the directory where our `views` can be found. Using the same `set` function, set the `view engine` to `ejs`.
 app.set("views", path.join(__dirname, "views"));
-// 1.3.1
 app.set("view engine", "ejs");
 
 // 3.1
 app.use(express.urlencoded({ extended: true }));
 
 // 1.4
-// @app-use-static-dir All of our CSS/JS for the client-side is found in the `public` directory. We need to point express to this directory. 
-// Still in app.js, call the `use` function of `app` and with the `express.static()` function as the only parameter. The parameter `express.static()` of will be a call to the `path.join()` function with the required path info. 
-// Hint: __dirname
 app.use(express.static(path.join(__dirname, "public")));
 
 // 2.1
@@ -46,10 +38,10 @@ let credit = accounts.credit;
 app.get("/", (req, res) => res.render("index", { title: "Accounts Summary", accounts: accounts }));
 
 
-// 2.5
-app.get("/savings", (req, res) => res.render("account", { title: savings.nickname, account: savings }));
+// 2.5 in views/index.ejs
 
-// 2.6 in views/index.ejs
+// 2.6
+app.get("/savings", (req, res) => res.render("account", { title: savings.nickname, account: savings }));
 
 // 2.7
 app.get("/checking", (req, res) => res.render("account", { title: checking.nickname, account: checking }));
@@ -121,4 +113,5 @@ app.post('/payment', (req, res) => {
 // 1.7
 app.listen("3000", () => console.log("PS Project Running on port 3000!"));
 
+// 1.8
 module.exports = app;
