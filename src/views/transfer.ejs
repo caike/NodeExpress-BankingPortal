@@ -5,17 +5,16 @@
 <span class="msg"><%= msg %></span>
 <span class="error"></span>
 
-<!-- 3.3 action and method-->
-<form id="transferForm" action="/transfer" method="POST">
+<form id="transferForm">
   <span>Transfer From: </span> 
-  <!-- 3.3.1 name and id-->
-  <select name="from" id="from" required>
+
+  <select required>
     <option value="checking">Checking</option>
     <option value="savings">Savings</option>
   </select>
   <span> to: </span>
-  <!-- 3.3.2 name and id-->
-  <select name="to" id="to" required>
+
+  <select required>
     <option value="checking">Checking</option>
     <option value="savings">Savings</option>
   </select>
