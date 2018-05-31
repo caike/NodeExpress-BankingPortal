@@ -65,23 +65,15 @@ app.get("/transfer", (req, res) =>  res.render("transfer", { title: "Transfer", 
 // 3.4
 app.post('/transfer', (req, res) => {
   // 3.5
-  let fromNew = accounts[req.body.from].balance - req.body.amount;
-  let toNew = parseInt(accounts[req.body.to].balance) + parseInt(req.body.amount);
-  
-  // 3.6
-  accounts[req.body.from].balance = fromNew;
-  accounts[req.body.to].balance = toNew;
-  
-  // 3.7
-  let accountsJSON = JSON.stringify(accounts, null, 4)
+  accounts[req.body.from].balance = accounts[req.body.from].balance - req.body.amount;
+  accounts[req.body.to].balance = parseInt(accounts[req.body.to].balance) + parseInt(req.body.amount);
 
-  // 3.8
+  // 3.6
+  let accountsJSON = JSON.stringify(accounts, null, 4)
   fs.writeFileSync(path.join(__dirname, "json", "accounts.json"), accountsJSON, 'utf8');
   
-  // 3.9
+  // 3.7
   let string = encodeURIComponent("Transfer Completed");
-
-  // 3.10
   res.redirect('/transfer?msg=' + string);
 });
 
