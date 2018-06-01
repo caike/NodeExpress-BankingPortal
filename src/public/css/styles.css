@@ -22,8 +22,13 @@ th {
   padding: 5px 0 0 5px;
 }
 
-.right-aligned {
-  margin-left: 750px;
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container a {
+  align-self: center;
 }
 
 .error {
