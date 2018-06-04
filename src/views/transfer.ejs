@@ -1,8 +1,11 @@
 <%- include('header'); -%>
 
-<h1><%= title %></h1>
+<h1>Transfer</h1>
 
-<span class="msg"><%= msg %></span>
+<% if (locals.message) { %>
+  <span class="message"><%= message %></span>
+<% } %>
+
 <span class="error"></span>
 
 <form id="transferForm">
