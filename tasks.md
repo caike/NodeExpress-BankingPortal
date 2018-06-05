@@ -119,7 +119,7 @@ In order to see your changes in a browser, you can run `npm run dev` to start th
 * Add an `h1` element with the text content `Profile`
 * Add a `div` element below the `h1` that displays each detail of the `user` object on a new line, name, username, phone, email, and address.
 * Below the `div` add a line break, then an anchor element that points to the root URL path and has the text content `Back to Account Summary`.
-* Include `footer.ejs` **Hint: <%--%>**
+* Include `footer.ejs` **Hint: <%- -%>**
 
 # Module 03 - Handling Form Data
 
