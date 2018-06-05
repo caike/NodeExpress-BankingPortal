@@ -1,14 +1,17 @@
-module.exports = (accounts) => {
-    const express = require("express")
-    const router = express.Router()
-    app.get("/savings", (req, res) =>
-      res.render("account", { account: accounts.savings })
-    );
-    app.get("/checking", (req, res) =>
-      res.render("account", { account: accounts.checking })
-    );
-    app.get("/credit", (req, res) =>
-      res.render("account", { account: accounts.credit })
-    );
-    return router;
-};
+const express = require("express")
+const router = express.Router()
+const { accounts } = require("../util");
+
+// Steps views/account.ejs
+
+router.get("/savings", (req, res) =>
+  res.render("account", { account: accounts.savings })
+);
+router.get("/checking", (req, res) =>
+  res.render("account", { account: accounts.checking })
+);
+router.get("/credit", (req, res) =>
+  res.render("account", { account: accounts.credit })
+);
+
+module.exports = router;

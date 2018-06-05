@@ -4,33 +4,21 @@ body {
   margin: 0 auto;
 }
 
-th {
-  text-align: left;
-}
-
-.transactions  {
-  border-spacing: 2px;
-  border-collapse: separate;
-  width: 100%;
-}
-
-.transactions tr:nth-child(odd) {
-  background-color: #CCCCCC;
-}
-
-.transactions td {
-  padding: 5px 0 0 5px;
-}
-
 .container {
   display: flex;
   justify-content: space-between;
 }
+.container a { align-self: center; }
 
-.container a {
-  align-self: center;
+.data-panel  {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  border: 1px solid #A6A6A6;
+  background-color: #B2BBC1);
 }
+.data-panel th { text-align: left; }
+.data-panel tr:nth-child(odd) { background-color: #A6A6A6; }
+.data-panel td { padding: 5px; }
 
-.error {
-  color: #FF0000;
-}
+.error { color: #FF0000; }
