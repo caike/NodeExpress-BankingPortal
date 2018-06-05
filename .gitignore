@@ -63,3 +63,6 @@ typings/
 
 # macOS
 .DS_Store
+
+# linting
+.markdownlint.json
