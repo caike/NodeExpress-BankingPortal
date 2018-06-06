@@ -3,7 +3,7 @@ const express = require('express');
 
 const app = express();
 
-const {accounts, users} = require('./util');
+const { accounts, users } = require('./data');
 
 const accountRoutes = require('./routes/accounts');
 const servicesRoutes = require('./routes/services');
@@ -11,18 +11,18 @@ const servicesRoutes = require('./routes/services');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Steps in views/index.ejs
 
 app.get('/', (req, res) =>
-	res.render('index', {title: 'Accounts Summary', accounts})
+  res.render('index', { title: 'Accounts Summary', accounts })
 );
 
 // Steps in views/index.ejs
 
-app.get('/profile', (req, res) => res.render('profile', {user: users[0]}));
+app.get('/profile', (req, res) => res.render('profile', { user: users[0] }));
 
 // Steps in views/profile.ejs
 
