@@ -60,10 +60,5 @@ typings/
 # next.js build output
 .next
 
-
 # macOS
 .DS_Store
-
-# linting
-.markdownlint.json
-.stylelintrc

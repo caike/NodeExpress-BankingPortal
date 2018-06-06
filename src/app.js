@@ -1,13 +1,12 @@
 const path = require('path');
-
 const express = require('express');
 
 const app = express();
 
+const {accounts, users} = require('./util');
+
 const accountRoutes = require('./routes/accounts');
 const servicesRoutes = require('./routes/services');
-
-const {accounts, users} = require('./util');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
