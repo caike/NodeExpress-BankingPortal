@@ -222,42 +222,42 @@ Still in `app.js` and in the function body of the post route, use the `writeFile
 
 # Module 05 - Using the Express Router
 
-## 5.1 - Create a library file
+## 5.1 -
 
-@data-js-create-file Create a new file called `data.js` in the root of the `src/` directory.
+@routes-accounts-js-create-file
 
 ## 5.2 -
 
-@data-js-require-built-ins In `data.js` require the built-in library `fs` and store a reference to it in a `const` called `fs`. Next, require the built-in library `path` and store a reference to it in a `const` called `path`.
+@routes-accounts-js-
 
 ## 5.3 -
 
-@data-js-transition-const-accounts In `app.js` locate the lines that are responsible for reading and parsing JSON from the `src/json/accounts.json` file. Cut and paste them to the new `data.js` file below the require statements.
+@routes-accounts-js-
 
 ## 5.4 -
 
-@data-js-transition-const-users In `app.js` locate the lines that are responsible for reading and parsing JSON from the `src/json/users.json` file. Cut and paste them to the new `data.js` file below the `accounts` const.
+@routes-accounts-js-
 
 ## 5.5 -
 
-@data-js-write-json-function In `data.js` below the account and user data lines create a function called `writeJSON`. **Hint: It is best to use ES6 arrow style function (=>).**
+@routes-accounts-js-
 
 ## 5.6 -
 
-@data-js-write-json-function-body In `app.js` locate the lines in the `transfer` post route function body that are responsible for writing JSON data to a file. **Hint: there are two lines.** Copy these lines to the body of the `writeJSON` function in the `data.js` file.
+@routes-services-js-create-file
 
 ## 5.7 -
 
-@data-js-export-data In `data.js` use `module.exports` to export an object containing the constants `accounts`, `users`, and the `writeJSON` function.
+@routes-services-js-
 
 ## 5.8 -
 
-@app-js-require-data-js Back In `app.js` require `data.js` and at the same time use object destructing to create three constants for `accounts`, `users`, and `writeJSON`.
+@routes-services-js-
 
 ## 5.9 -
 
-@app-js-call-write-json-transfer In `app.js` locate the lines in the `transfer` post route function body that are responsible for writing JSON data to a file and replace them with a call to the `writeJSON()` function.
+@routes-services-js-
 
 ## 5.10 -
 
-@app-js-call-write-json-payments In `app.js` locate the lines in the `payment` post route function body that are responsible for writing JSON data to a file and replace them with a call to the `writeJSON()` function.
+@routes-services-js-
