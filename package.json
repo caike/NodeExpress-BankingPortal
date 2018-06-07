@@ -4,9 +4,13 @@
   "description": "Node/Express Pluralsight Project Sample Application",
   "main": "app.js",
   "scripts": {
-    "start": "node ./src/app.js",
-    "dev": "nodemon ./src/app.js",
-    "test": "mocha --exit"
+    "start": "nodemon ./src/app.js",
+    "test:module1": "NODE_ENV=test mocha 'tests/modules1/*.spec.js' || true",
+    "test:module2": "NODE_ENV=test mocha 'tests/modules2/*.spec.js' || true",
+    "test:module3": "NODE_ENV=test mocha 'tests/modules3/*.spec.js' || true",
+    "test:module4": "NODE_ENV=test mocha 'tests/modules4/*.spec.js' || true",
+    "test:module5": "NODE_ENV=test mocha 'tests/modules5/*.spec.js' || true",
+    "test": "NODE_ENV=test mocha 'tests/**/*.spec.js' || true"
   },
   "repository": {
     "type": "git",
