@@ -27,7 +27,7 @@ In order to see your changes in a browser, you can run `npm run dev` to start th
 
 ## 1.2 - Require the Express Framework
 
-@app-require-express-const-app In app.js, require the express framework and store a reference to it in a `const` called `express`. Next, call the express function and store it in a `const` called `app`.
+@app-require-express-const-app In `app.js`, require the express framework and store a reference to it in a `const` called `express`. Next, call the express function and store it in a `const` called `app`.
 
 ## 1.3 - Configure the View Directory and Engine
 
@@ -222,42 +222,67 @@ Still in `app.js` and in the function body of the post route, use the `writeFile
 
 # Module 05 - Using the Express Router
 
-## 5.1 -
+## 5.1 - Create a Account Routes File
 
-@routes-accounts-js-create-file
+@routes-accounts-js-create-file Create a new file called `accounts.js` in the directory `src/routes/` (you will need to create this directory).
 
-## 5.2 -
+## 5.2 - Require Express
 
-@routes-accounts-js-
+@routes-accounts-js-require-express In the new `accounts.js` require the express framework and store a reference to it in a `const` called `express`.  Next, call the `express.Router()` function and store it in a `const` called `router`.
 
-## 5.3 -
+## 5.3 - Require Data Library
 
-@routes-accounts-js-
+@routes-accounts-js-require-data In `accounts.js` require `data.js` and at the same time use object destructing to create one constant called `accounts`.
 
-## 5.4 -
+## 5.4 - Move Account Routes
 
-@routes-accounts-js-
+@routes-accounts-js-move-routes In `app.js` locate the savings, checking, and credit get routes, cut and paste these routes in `accounts.js` below the require statements. Now in `accounts.js` update the routes to be part of the router by replacing `app.get` with `router.get`.
 
-## 5.5 -
+## 5.5 - Export the Router
 
-@routes-accounts-js-
+@routes-accounts-js-export-router In `accounts.js` export the `router` using the `module.exports` syntax.
 
-## 5.6 -
+## 5.6 - Require the Routes
 
-@routes-services-js-create-file
+@app-require-account-routes Switch to `app.js` and require the `routes/accounts.js` file and store a reference to it in a `const` called `accountRoutes`.
 
-## 5.7 -
+## 5.7 - Use the Routes
 
-@routes-services-js-
+@app-use-account-routes In `app.js` where your account routes used to be, call the `use` function on `app` with two arguments. The first argument should be `/accounts` and the second is the `accountRoutes` const.
 
-## 5.8 -
+## 5.8 - Create a Services Routes File
 
-@routes-services-js-
+@routes-accounts-js-create-file Create a new file called `services.js` in the directory `src/routes/`.
 
-## 5.9 -
+## 5.9 - Require Express
 
-@routes-services-js-
+@routes-services-js-require-express In the new `services.js` require the express framework and store a reference to it in a `const` called `express`.  Next, call the `express.Router()` function and store it in a `const` called `router`.
 
-## 5.10 -
+## 5.10 - Require Data Library
 
-@routes-services-js-
+@routes-services-js-require-data In `services.js` require `data.js` and at the same time use object destructing to create two constants called `accounts` and `writeJSON`.
+
+## 5.11 - Move Services Routes
+
+@routes-services-js-move-routes In `app.js` locate the transfer and payment post and get routes, cut and paste these routes in `services.js` below the require statements. Now in `accounts.js` update the routes to be part of the router by replacing `app.get` with `router.get`.
+
+## 5.12 - Export the Router
+
+@routes-services-js-export-router In `services.js` export the `router` using the `module.exports` syntax.
+
+## 5.13 - Require the Routes
+
+@app-require-services-routes Switch to `app.js` and require the `routes/services.js` file and store a reference to it in a `const` called `servicesRoutes`.
+
+## 5.14 - Use the Routes
+
+@app-use-services-routes In `app.js` where your account routes used to be, call the `use` function on `app` with two arguments. The first argument should be `/services` and the second is the `servicesRoutes` const.
+
+## 5.15 - Update Views
+
+@views-update-for-routes Since all URL paths have changed for accounts and services we need to change the following views:
+
+- In `src/views/index.ejs` change `href="transfer"` to `href="/services/transfer"`
+- In `src/views/summary.ejs` change `href="<%= account.unique_name %>"` to `href="/account/<%= account.unique_name %>"`
+- In `src/views/transfer.ejs` change `action="/transfer"` to `action="/services/transfer"`
+- In `src/views/payment.ejs` change `action="/payment"` to `action="/services/payment"`
