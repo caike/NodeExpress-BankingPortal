@@ -1,3 +1,0 @@
---ui bdd
---timeout 10000
---require ./tests/globals
