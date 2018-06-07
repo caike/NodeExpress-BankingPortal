@@ -27,9 +27,11 @@
     "express": "^4.16.3"
   },
   "devDependencies": {
+    "acorn": "^5.6.2",
     "chai": "^4.1.2",
     "esprima": "^4.0.0",
     "esquery": "^1.0.1",
+    "lodash": "^4.17.10",
     "mocha": "^5.1.1",
     "nodemon": "^1.17.4",
     "supertest": "^3.1.0",
