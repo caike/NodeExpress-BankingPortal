@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const { assert } = require('chai');
-const esprima = require('esprima');
-const esquery = require('esquery');
+const acorn = require('acorn');
+const _ = require('lodash');
 
 describe('View Directory and Engine', () => {
   it('require express and create app const @app-require-express-const-app', () => {
@@ -16,22 +16,12 @@ describe('View Directory and Engine', () => {
       );
     }
 
-    const ast = esprima.parse(file);
+    const ast = acorn.parse(file);
 
-    console.log(ast.body);
-
-    // let results = esquery(
-    //   ast,
-    //   'VariableDeclaration[kind="const"] VariableDeclarator CallExpression[callee.name="require"] Literal[value="express"]'
-    // );
-    // assert(
-    //   results.length > 0,
-    //   'The express library has not been required in `app.js`.'
-    // );
-    // results = esquery(
-    //   ast,
-    //   'VariableDeclaration[kind="const"] VariableDeclarator[id.name="app"] CallExpression[callee.name="express"]'
-    // );
-    // assert(results.length > 0, 'An `app` const has not been created.');
+    _.map(ast.body, objects => {
+      if (objects.type === 'MemberExpression'){
+        console.log(objects);
+      }
+    });
   });
 });
