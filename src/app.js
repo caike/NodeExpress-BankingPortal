@@ -15,17 +15,17 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Steps in views/index.ejs
+// steps in views/index.ejs
 
 app.get('/', (req, res) =>
   res.render('index', { title: 'Accounts Summary', accounts })
 );
 
-// Steps in views/index.ejs
+// steps in views/index.ejs
 
 app.get('/profile', (req, res) => res.render('profile', { user: users[0] }));
 
-// Steps in views/profile.ejs
+// steps in views/profile.ejs
 
 app.use('/account', accountRoutes);
 app.use('/services', servicesRoutes);

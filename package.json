@@ -5,12 +5,12 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon ./src/app.js",
-    "test:module1": "NODE_ENV=test mocha './src/tests/module1/*.spec.js' || true",
-    "test:module2": "NODE_ENV=test mocha './src/tests/module2/*.spec.js' || true",
-    "test:module3": "NODE_ENV=test mocha './src/tests/module3/*.spec.js' || true",
-    "test:module4": "NODE_ENV=test mocha './src/tests/module4/*.spec.js' || true",
-    "test:module5": "NODE_ENV=test mocha './src/tests/module5/*.spec.js' || true",
-    "test": "NODE_ENV=test mocha './src/tests/**/*.spec.js' || true"
+    "test:module1": "NODE_ENV=test mocha --exit './src/tests/module1/*.spec.js' || true",
+    "test:module2": "NODE_ENV=test mocha --exit './src/tests/module2/*.spec.js' || true",
+    "test:module3": "NODE_ENV=test mocha --exit './src/tests/module3/*.spec.js' || true",
+    "test:module4": "NODE_ENV=test mocha --exit './src/tests/module4/*.spec.js' || true",
+    "test:module5": "NODE_ENV=test mocha --exit './src/tests/module5/*.spec.js' || true",
+    "test": "NODE_ENV=test mocha --exit './src/tests/**/*.spec.js' || true"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "lodash": "^4.17.10",
     "mocha": "^5.1.1",
     "nodemon": "^1.17.4",
+    "ramda": "^0.25.0",
     "supertest": "^3.1.0",
     "xo": "^0.21.1"
   }
