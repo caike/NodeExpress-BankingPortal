@@ -5,12 +5,12 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon ./src/app.js",
-    "test:module1": "NODE_ENV=test mocha --exit './src/tests/module1/*.spec.js' || true",
-    "test:module2": "NODE_ENV=test mocha --exit './src/tests/module2/*.spec.js' || true",
-    "test:module3": "NODE_ENV=test mocha --exit './src/tests/module3/*.spec.js' || true",
-    "test:module4": "NODE_ENV=test mocha --exit './src/tests/module4/*.spec.js' || true",
-    "test:module5": "NODE_ENV=test mocha --exit './src/tests/module5/*.spec.js' || true",
-    "test": "NODE_ENV=test mocha --exit './src/tests/**/*.spec.js' || true"
+    "test:module1": "NODE_ENV=test mocha --exit './src/test/module1/*.spec.js' || true",
+    "test:module2": "NODE_ENV=test mocha --exit './src/test/module2/*.spec.js' || true",
+    "test:module3": "NODE_ENV=test mocha --exit './src/test/module3/*.spec.js' || true",
+    "test:module4": "NODE_ENV=test mocha --exit './src/test/module4/*.spec.js' || true",
+    "test:module5": "NODE_ENV=test mocha --exit './src/test/module5/*.spec.js' || true",
+    "test": "NODE_ENV=test mocha --exit './src/test/**/*.spec.js' || true"
   },
   "repository": {
     "type": "git",
