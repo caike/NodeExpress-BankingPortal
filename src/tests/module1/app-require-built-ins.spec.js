@@ -10,10 +10,7 @@ describe('Require `fs` and `path` built-ins.', () => {
     try {
       file = fs.readFileSync(path.join(process.cwd(), 'src/app.js'), 'utf8');
     } catch (e) {
-      assert(
-        false,
-        'The app.js file does not exist. Please make sure it was not deleted.'
-      );
+      assert(false, 'The app.js file does not exist. Please make sure it was not deleted.');
     }
 
     const ast = esprima.parse(file);
