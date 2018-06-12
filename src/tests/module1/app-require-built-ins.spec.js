@@ -17,7 +17,6 @@ describe('Require `fs` and `path` built-ins.', () => {
     }
 
     const ast = esprima.parse(file);
-    // VariableDeclarator
     let results = esquery(
       ast,
       'VariableDeclaration[kind="const"] VariableDeclarator CallExpression[callee.name="require"] Literal[value="fs"]'

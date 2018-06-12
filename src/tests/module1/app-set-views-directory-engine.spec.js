@@ -29,6 +29,6 @@ describe('View Directory and Engine', () => {
     assert(isJoin(dirResults[0]), '`path.join()` may be missing.');
     assert(isDirName(dirResults[0]), 'Check to see if you are using 2 underscores for `__dirname`.');
     assert(isViews(dirResults[0]), 'The view directory has not been set to the correct path.');
-    assert(app.locals.settings['view engine'] === 'ejs', 'The view engine has not been set to `ejs`');
+    assert(app.settings['view engine'] === 'ejs', 'The view engine has not been set to `ejs`');
   });
 });
