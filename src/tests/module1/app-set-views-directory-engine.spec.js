@@ -8,7 +8,7 @@ const R = require('ramda');
 const app = require('../../app');
 
 describe('View Directory and Engine', () => {
-  it('require express and create app const @app-require-express-const-app', () => {
+  it('require express and create app const @app-require-express-const-app', done => {
     let file;
     try {
       file = fs.readFileSync(path.join(process.cwd(), 'src/app.js'), 'utf8');
@@ -30,5 +30,6 @@ describe('View Directory and Engine', () => {
     assert(isDirName(dirResults[0]), 'Check to see if you are using 2 underscores for `__dirname`.');
     assert(isViews(dirResults[0]), 'The view directory has not been set to the correct path.');
     assert(app.settings['view engine'] === 'ejs', 'The view engine has not been set to `ejs`');
+    done();
   });
 });
