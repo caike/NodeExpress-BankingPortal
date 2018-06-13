@@ -60,12 +60,12 @@ In order to see your changes in a browser, you can run `npm run dev` to start th
 
 @index-ejs-create-view In the newly created file `index.ejs` complete the following:
 
-- Include `header.ejs` **Hint: <%- -%>**
+- Include `header.ejs` **Hint: <%- %>**
 - Add a `div` element with a class of `container`.
 - In the container div display the value of the `title` key in an `h1` element. **Hint: <%= %>**
 - Add an anchor element below the `h1` that points to the `/profile` URL path, and has the text content “Profile”.
 - Below the container div add a line break and another anchor element that points to the `/transfer` URL path with the text content `Transfer`.
-- Include `footer.ejs` **Hint: <%- -%>**
+- Include `footer.ejs` **Hint: <%- %>**
 
 ## 1.9 - Start Server
 
@@ -87,7 +87,7 @@ In order to see your changes in a browser, you can run `npm run dev` to start th
 
 ## 2.4 - Update the Index View
 
-@index-ejs-update-view In `index.ejs` and after the ejs markup that displays the `title`, add the ejs markup to include the `summary` view for each account in the `accounts` variable, savings, checking, and credit. **Hint: you will have three include statements(`<%- -%>`), each `include` function will be passed a different account, i.e `{ account: accounts.checking }`.**
+@index-ejs-update-view In `index.ejs` and after the ejs markup that displays the `title`, add the ejs markup to include the `summary` view for each account in the `accounts` variable, savings, checking, and credit. **Hint: you will have three include statements(`<%- %>`), each `include` function will be passed a different account, i.e `{ account: accounts.checking }`.**
 
 ## 2.5 - Create the Savings Account Route
 
@@ -119,11 +119,11 @@ In order to see your changes in a browser, you can run `npm run dev` to start th
 
 @profile-ejs-create-view In the newly created file `profile.ejs` complete the following:
 
-- Include `header.ejs` **Hint: <%- -%>**
+- Include `header.ejs` **Hint: <%- %>**
 - Add an `h1` element with the text content `Profile`
 - Add a `div` element below the `h1` that displays each detail of the `user` object on a new line, name, username, phone, email, and address.
 - Below the `div` add a line break, then an anchor element that points to the root URL path and has the text content `Back to Account Summary`.
-- Include `footer.ejs` **Hint: <%- -%>**
+- Include `footer.ejs` **Hint: <%- %>**
 
 # Module 03 - Handling Form Data
 

@@ -17,6 +17,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // steps in views/index.ejs
 
+// app.get('/', (req, res) => res.render('index', { title: 'Index' }));
+
 app.get('/', (req, res) =>
   res.render('index', { title: 'Accounts Summary', accounts })
 );

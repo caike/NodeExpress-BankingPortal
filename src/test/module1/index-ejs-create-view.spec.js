@@ -13,10 +13,11 @@ describe('Create `index` view', () => {
     }
 
     try {
-      ejs.compile(file);
+      const template = ejs.compile(file);
+      console.log(template());
     } catch (err) {
-      console.log(err);
-      // assert.ok(err.message.indexOf('compiling ejs') > -1);
+      // const errorMessage = err.message.substring(0, err.message.indexOf('compiling ejs'));
+      // assert(err.message.indexOf('compiling ejs') < -1, `${errorMessage}compiling index.ejs`);
     }
   });
 });
