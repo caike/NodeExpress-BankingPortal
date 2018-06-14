@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { assert } = require('chai');
 
 describe('`index.ejs` exists', () => {
   it('`index.ejs` should exist  @app-require-express-const-app', () => {

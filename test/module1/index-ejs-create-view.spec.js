@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { assert } = require('chai');
 const ejs = require('ejs');
 
 describe('Create `index` view', () => {

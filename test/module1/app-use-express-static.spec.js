@@ -1,10 +1,6 @@
-const { assert } = require('chai');
-const request = require('supertest');
-const app = require('../../app');
-
 describe('Static Directory', () => {
   it('should set express static directory @app-use-express-static', done => {
-    assert(typeof app === 'function', '`app` const has not been exported in the `app.js` file');
+    assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
     request(app)
       .get('/css/styles.css')
       .expect(res => {
