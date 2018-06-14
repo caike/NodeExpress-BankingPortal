@@ -4,8 +4,8 @@ const sinon = require('sinon');
 const rewire = require('rewire');
 
 const appModule = rewire('../src/app');
-let app;
 
+let app;
 try {
   app = appModule.__get__('app');
 } catch (err) {

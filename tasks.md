@@ -59,7 +59,7 @@ In order to see your changes in a browser, you can run `npm run dev` to start th
 - Below the container div add a line break and another anchor element that points to the `/transfer` URL path with the text content `Transfer`.
 - Include `footer.ejs` **Hint: <%- %>**
 
-## 1.9 - Start Server
+## 1.8 - Start Server
 
 @app-listen-console-log In `app.js` using the `listen` function to create a server that listens on port `3000` and then prints the message “PS Project Running on port 3000!” to the console after the server is created.
 
