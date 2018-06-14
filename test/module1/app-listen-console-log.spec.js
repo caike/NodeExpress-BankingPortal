@@ -3,8 +3,8 @@ const path = require('path');
 const esprima = require('esprima');
 const esquery = require('esquery');
 
-describe('Require `fs` and `path` built-ins.', () => {
-  it('should contain requires @app-listen-console-log', () => {
+describe('Server created with app.listen', () => {
+  it('should contain app.listen @app-listen-console-log', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
     let file;
     try {

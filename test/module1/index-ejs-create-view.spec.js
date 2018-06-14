@@ -3,7 +3,7 @@ const path = require('path');
 const ejs = require('ejs');
 
 describe('Create `index` view', () => {
-  it('should create the index view @index-ejs-create-view-app', () => {
+  it('should create the index view @index-ejs-create-view', () => {
     let file;
     try {
       file = fs.readFileSync(path.join(process.cwd(), 'src/views/index.ejs'), 'utf8');

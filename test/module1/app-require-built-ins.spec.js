@@ -1,4 +1,4 @@
-describe('Require `fs` and `path` built-ins.', () => {
+describe('Require `fs` and `path` built-ins', () => {
   it('should contain requires @app-require-built-ins', () => {
     let fs;
     let path;

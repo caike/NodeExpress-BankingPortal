@@ -1,7 +1,7 @@
 const R = require('ramda');
 
-describe('Index Route', () => {
-  it('should create the index route @app-get-index-route', done => {
+describe('app.js contains an Index Route', () => {
+  it('should contain the index route @app-get-index-route', done => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
     const spy = sinon.spy(app, 'render');
 

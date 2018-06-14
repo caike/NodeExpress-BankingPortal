@@ -1,4 +1,4 @@
-describe('Require Express and Create `app` const.', () => {
+describe('Require Express and Create `app` const', () => {
   it('require express and create app const @app-require-express-const-app', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
     let express;
