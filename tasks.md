@@ -29,34 +29,26 @@ In order to see your changes in a browser, you can run `npm run dev` to start th
 
 @app-require-express-const-app In `app.js`, require the express framework and store a reference to it in a `const` called `express`. Next, call the express function and store it in a `const` called `app`.
 
-## 1.3 - Export App
-
-@app-module-exports-app For the purposes of checking your work, please add the following line to the bottom of `app.js`:
-
-- `module.exports = app`
-
-**Note: this line should always be at the bottom of `app.js`.**
-
-## 1.4 - Configure the View Directory and Engine
+## 1.3 - Configure the View Directory and Engine
 
 @app-set-views-directory-engine Still in app.js, use the `set` function of your newly created `app` to configure the directory where our `views` can be found. Using the same `set` function, set the `view engine` to `ejs`. **Hint: `path.join()` & `__dirname`**
 
-## 1.5 - Configure the Static Directory
+## 1.4 - Configure the Static Directory
 
 @app-use-express-static All of our CSS/JS for the client-side is found in the `public` directory. We need to point express to `public`.
 
 - In app.js call the `use` function of `app` with a call to the `express.static()` function as the only parameter.
 - `express.static()` should be passed the full path to the `public` directory. **Hint: `path.join()` & `__dirname`**
 
-## 1.6 - Create the Index Route
+## 1.5 - Create the Index Route
 
 @app-get-index-route create a `get` route that points at the root URL path ‘/‘. Render the `index` view (created in the next step) and pass an object with a single key value pair, `title: “Index”`.
 
-## 1.7 - Create the Index View File
+## 1.6 - Create the Index View File
 
 @index-ejs-create-view-file Create a new file called `index.ejs` in the `src/views/` directory.
 
-## 1.8 - Create the Index View
+## 1.7 - Create the Index View
 
 @index-ejs-create-view In the newly created file `index.ejs` complete the following:
 
