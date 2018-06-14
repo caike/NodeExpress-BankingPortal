@@ -24,7 +24,8 @@
   "homepage": "https://github.com/tjbell/NodeExpress-Untitled#readme",
   "dependencies": {
     "ejs": "^2.6.1",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "sinon": "^6.0.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -33,7 +34,6 @@
     "mocha": "^5.1.1",
     "nodemon": "^1.17.4",
     "ramda": "^0.25.0",
-    "rewire": "^4.0.1",
     "supertest": "^3.1.0",
     "xo": "^0.21.1"
   }

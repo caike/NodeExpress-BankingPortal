@@ -17,21 +17,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // steps in views/index.ejs
 
-// app.get('/', (req, res) => res.render('index', { title: 'Index' }));
+app.get('/', (req, res) => res.render('index', { title: 'Index' }));
 
-app.get('/', (req, res) =>
+/* app.get('/', (req, res) =>
   res.render('index', { title: 'Accounts Summary', accounts })
-);
+); */
 
 // steps in views/index.ejs
 
-app.get('/profile', (req, res) => res.render('profile', { user: users[0] }));
+// app.get('/profile', (req, res) => res.render('profile', { user: users[0] }));
 
 // steps in views/profile.ejs
 
-app.use('/account', accountRoutes);
-app.use('/services', servicesRoutes);
+// app.use('/account', accountRoutes);
+// app.use('/services', servicesRoutes);
 
-app.listen('3000', () => console.log('PS Project Running on port 3000!'));
+// app.listen('3000', () => console.log('PS Project Running on port 3000!'));
 
 module.exports = app;
