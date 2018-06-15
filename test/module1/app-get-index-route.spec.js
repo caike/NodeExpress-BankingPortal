@@ -1,10 +1,13 @@
 const R = require('ramda');
 
 describe('app.js contains an Index Route', () => {
+  let spy;
+  before(() => {
+    spy = sinon.spy(app, 'render');
+  });
+
   it('should contain the index route @app-get-index-route', done => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
-    const spy = sinon.spy(app, 'render');
-
     request(app)
       .get('/')
       .expect(() => {
@@ -13,9 +16,9 @@ describe('app.js contains an Index Route', () => {
         assert(R.has('title')(spy.firstCall.args[1]), 'The index route maybe missing an object with a `title: "Index"` key value pair.');
       })
       .end(done);
+  });
 
-    after(() => {
-      spy.restore();
-    });
+  after(() => {
+    spy.restore();
   });
 });

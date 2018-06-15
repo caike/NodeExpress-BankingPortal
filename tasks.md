@@ -75,7 +75,7 @@ In order to see your changes in a browser, you can run `npm run dev` to start th
 
 ## 2.3 - Update the Index Route
 
-@app-update-route In `app.js` update the object passed to the existing index route. The `title` should be “Accounts Summary”. A new key value pair should be added, `accounts: accounts`.
+@app-update-index-route In `app.js` update the object passed to the existing index route. The `title` should be “Accounts Summary”. A new key value pair should be added, `accounts: accounts`.
 
 ## 2.4 - Update the Index View
 
@@ -89,7 +89,7 @@ In order to see your changes in a browser, you can run `npm run dev` to start th
 
 ## 2.6 - Create the Checking & Credit Routes
 
-@app-get-checking-account-route Now that you have created the savings account route, create similar routes for the checking and credit accounts in the `app.js` file.
+@app-get-other-account-routes Now that you have created the savings account route, create similar routes for the checking and credit accounts in the `app.js` file.
 
 ## 2.7 - Show Account Transactions
 
