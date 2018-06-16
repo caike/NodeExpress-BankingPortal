@@ -1,6 +1,6 @@
 const R = require('ramda');
 
-describe('app.js should contain Checking and Credit Routes', () => {
+describe('Checking and Credit Routes', () => {
   let spy;
   before(() => {
     spy = sinon.spy(app, 'render');
