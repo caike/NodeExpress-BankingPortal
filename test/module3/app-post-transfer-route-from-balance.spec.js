@@ -7,12 +7,10 @@ describe('Transfer post route from balance', () => {
       if ({}.hasOwnProperty.call(routes, key)) {
         if (routes[key].route) {
           if (routes[key].route.path === '/transfer' && routes[key].route.methods.post) {
-            // console.log(routes[key].route.stack[0].handle.toString());
+            console.log(routes[key].route.stack[0].handle.toString());
           }
         }
       }
     }
-
-    // assert(postRoute, 'The `transfer` post route can not be found.');
   });
 });
