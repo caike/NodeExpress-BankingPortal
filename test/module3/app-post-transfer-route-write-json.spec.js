@@ -24,7 +24,6 @@ describe('Transfer post route write JSON', () => {
     const res = mockRes();
 
     handleSpy(req, res);
-    console.log(writeFileSyncStub.callCount);
   });
 
   after(() => {
