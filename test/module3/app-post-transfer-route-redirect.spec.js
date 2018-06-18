@@ -1,18 +1,34 @@
+const fs = require('fs');
+
 describe('Transfer post route redirect', () => {
-  let spy;
+  let stack;
+  let handleSpy;
+  let writeFileSyncStub;
+
   before(() => {
-    spy = sinon.spy(app, 'render');
+    stack = routeStack('/transfer', 'post');
+    handleSpy = sinon.spy(stack, 'handle');
+    writeFileSyncStub = sinon.stub(fs, 'writeFileSync');
   });
 
-  it('transfer post route should contain a render method @app-get-savings-account-route', done => {
+  it('should contain the transfer route @app-get-index-route', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
-    request(app)
-      .post('/transfer')
-      .expect(() => {})
-      .end(done);
+    const request = {
+      body: {
+        from: 'savings',
+        to: 'checking',
+        amount: 100
+      }
+    };
+    const req = mockReq(request);
+    const res = mockRes();
+
+    handleSpy(req, res);
+    assert(res.render.calledWithExactly('transfer', { message: 'Transfer Completed' }), '`res.render` is not being called with the correct arguments.');
   });
 
   after(() => {
-    spy.restore();
+    handleSpy.restore();
+    writeFileSyncStub.restore();
   });
 });

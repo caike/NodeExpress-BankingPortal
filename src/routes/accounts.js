@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const { accounts } = require('../data');
 
-// Steps views/account.ejs
+// steps views/account.ejs
 
 router.get('/savings', (req, res) =>
   res.render('account', { account: accounts.savings })

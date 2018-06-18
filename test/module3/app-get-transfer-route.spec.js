@@ -1,24 +1,23 @@
-describe('Transfer get route.', () => {
-  let spy;
+describe('Transfer get route', () => {
+  let stack;
+  let handleSpy;
+
   before(() => {
-    spy = sinon.spy(app, 'render');
+    stack = routeStack('/transfer', 'get');
+    handleSpy = sinon.spy(stack, 'handle');
   });
 
-  it('should contain the get transfer route @app-get-transfer-route', done => {
+  it('should contain the get transfer route @app-get-transfer-route', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
-    request(app)
-      .get('/transfer')
-      .expect(() => {
-        assert(spy.called, 'The transfer route may have not been created.');
-        assert(
-          spy.firstCall.args[0] === 'transfer',
-          'The transfer route does not seem to be rendering the `transfer` view.'
-        );
-      })
-      .end(done);
+    const req = mockReq();
+    const res = mockRes();
+
+    handleSpy(req, res);
+    assert(res.render.called, 'The index route may have not been created.');
+    assert(res.render.calledWithExactly('transfer'), '`res.render` is not being called with the correct arguments.');
   });
 
   after(() => {
-    spy.restore();
+    handleSpy.restore();
   });
 });

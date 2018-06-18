@@ -1,19 +1,22 @@
 describe('Transfer post route', () => {
+  let stub;
+  let stack;
+  before(() => {
+    stack = routeStack('/transfer', 'post');
+    stub = sinon.stub(stack, 'handle');
+  });
+
   it('should contain the post transfer route @app-post-transfer-route', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
+    const request = { body: { from: 'savings', to: 'checking', amount: 100 } };
+    const req = mockReq(request);
+    const res = mockRes();
 
-    const routes = app._router.stack;
-    let postRoute;
-    for (const key in routes) {
-      if ({}.hasOwnProperty.call(routes, key)) {
-        if (routes[key].route) {
-          if (routes[key].route.path === '/transfer' && routes[key].route.methods.post) {
-            postRoute = true;
-          }
-        }
-      }
-    }
+    stub(req, res);
+    assert(stub.called, 'The transfer post route may have not be created yet.');
+  });
 
-    assert(postRoute, 'The `transfer` post route can not be found.');
+  after(() => {
+    stub.restore();
   });
 });
