@@ -13,8 +13,7 @@ describe('Transfer get route', () => {
     const res = mockRes();
 
     handleSpy(req, res);
-    assert(res.render.called, 'The index route may have not been created.');
-    assert(res.render.calledWithExactly('transfer'), '`res.render` is not being called with the correct arguments.');
+    assert(res.render.called, 'The transfer post route may have not been created.');
   });
 
   after(() => {
