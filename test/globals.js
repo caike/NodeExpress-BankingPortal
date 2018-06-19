@@ -6,6 +6,7 @@ const sinonChai = require('sinon-chai');
 const { mockReq, mockRes } = require('sinon-express-mock');
 
 const appModule = rewire('../src/app');
+const dataModule = rewire('../src/data');
 
 chai.use(sinonChai);
 
@@ -40,5 +41,6 @@ Object.assign(global, {
   app,
   routeStack,
   mockReq,
-  mockRes
+  mockRes,
+  dataModule
 });

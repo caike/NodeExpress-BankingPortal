@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const R = require('ramda');
 
 describe('Read account data', () => {
@@ -6,8 +8,13 @@ describe('Read account data', () => {
     let accounts;
     let accountData;
     try {
-      accountData = appModule.__get__('accountData');
-      accounts = appModule.__get__('accounts');
+      if (fs.existsSync(path.join(process.cwd(), 'src/data.js'))) {
+        accountData = dataModule.__get__('accountData');
+        accounts = dataModule.__get__('accounts');
+      } else {
+        accountData = appModule.__get__('accountData');
+        accounts = appModule.__get__('accounts');
+      }
     } catch (err) {
       assert(accountData !== undefined, 'Has the `accountData` variable been created in `app.js`?');
       assert(accounts !== undefined, 'Has the `accounts` variable been created in `app.js`?');

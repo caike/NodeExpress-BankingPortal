@@ -186,11 +186,11 @@ Still in `app.js` and in the function body of the post route, use the `writeFile
 
 ## 4.3 - Transition Account Data to Data Library
 
-@data-js-transition-const-accounts In `app.js` locate the lines that are responsible for reading and parsing JSON from the `src/json/accounts.json` file. Cut and paste them to the new `data.js` file below the require statements.
+@data-js-transition-const-accounts In `app.js` locate the lines that are responsible for reading and parsing JSON from the `src/json/accounts.json` file. Copy and paste them to the new `data.js` file below the require statements.
 
 ## 4.4 - Transition User Data to Data Library
 
-@data-js-transition-const-users In `app.js` locate the lines that are responsible for reading and parsing JSON from the `src/json/users.json` file. Cut and paste them to the new `data.js` file below the `accounts` const.
+@data-js-transition-const-users In `app.js` locate the lines that are responsible for reading and parsing JSON from the `src/json/users.json` file. Copy and paste them to the new `data.js` file below the `accounts` const.
 
 ## 4.5 - Write JSON Function
 
@@ -206,7 +206,7 @@ Still in `app.js` and in the function body of the post route, use the `writeFile
 
 ## 4.8 - Require Data Library
 
-@app-js-require-data-js Back In `app.js` require `data.js` and at the same time use object destructing to create three constants for `accounts`, `users`, and `writeJSON`.
+@app-js-require-data-js Back In `app.js` require `data.js` and at the same time use object destructing to create three constants for `accounts`, `users`, and `writeJSON`. Remove the lines in `app.js` that create the `accountData`, `accounts`, `userData`, and `users` consts. `accounts`, `users`, and the `writeJSON` function are now brought in by the require statement.
 
 ## 4.9 - Function Call Transfer
 
@@ -214,7 +214,7 @@ Still in `app.js` and in the function body of the post route, use the `writeFile
 
 ## 4.10 - Function Call Payments
 
-@app-js-call-write-json-payments In `app.js` locate the lines in the `payment` post route function body that are responsible for writing JSON data to a file and replace them with a call to the `writeJSON()` function.
+@app-js-call-write-json-payment In `app.js` locate the lines in the `payment` post route function body that are responsible for writing JSON data to a file and replace them with a call to the `writeJSON()` function.
 
 # Module 05 - Using the Express Router
 

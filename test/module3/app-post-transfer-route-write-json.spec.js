@@ -26,6 +26,10 @@ describe('Transfer post route write JSON', () => {
 
     handleSpy(req, res);
     assert(
+      writeFileSyncStub.called,
+      '`writeFileSync` was not called.'
+    );
+    assert(
       writeFileSyncStub.firstCall.args[0] === path.join(__dirname, '../../src/json/accounts.json'),
       'The path being passed to `writeFileSync` is incorrect.'
     );
