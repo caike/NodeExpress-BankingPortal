@@ -1,11 +1,16 @@
+const fs = require('fs');
+const path = require('path');
 const R = require('ramda');
+const rewire = require('rewire');
 
 describe('Move services routes', () => {
   it('`services.js` should contain routes @routes-services-js-move-routes', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
+    assert(fs.existsSync(path.join(process.cwd(), 'src/routes/services.js')), 'The `src/routes/services.js` file does not exist.');
     let express;
     let router;
     try {
+      const servicesModule = rewire('../src/routes/services');
       express = servicesModule.__get__('express');
       router = servicesModule.__get__('router');
     } catch (err) {

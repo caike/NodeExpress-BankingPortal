@@ -1,4 +1,5 @@
 const R = require('ramda');
+const rewire = require('rewire');
 
 describe('Read account data from `data.js`', () => {
   it('should read account data @data-js-transition-accounts', () => {
@@ -6,6 +7,7 @@ describe('Read account data from `data.js`', () => {
     let accounts;
     let accountData;
     try {
+      const dataModule = rewire('../src/data');
       accountData = dataModule.__get__('accountData');
       accounts = dataModule.__get__('accounts');
     } catch (err) {
