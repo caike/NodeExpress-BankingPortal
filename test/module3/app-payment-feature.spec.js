@@ -2,55 +2,72 @@ const fs = require('fs');
 const path = require('path');
 
 describe('Payment Feature', () => {
-  let stack;
-  let handleSpy;
+  let getStack;
+  let getHandleSpy;
+  let postStack;
+  let postHandleSpy;
   let writeFileSyncStub;
 
   before(() => {
-    if (typeof stack === 'undefined') {
-      handleSpy = {
-        restore: () => { }
-      };
+    getStack = routeStack('/payment', 'get') || routeStack('/services/payment', 'get');
+    if (typeof getStack === 'undefined') {
+      getHandleSpy = { restore: () => { } };
     } else {
-      handleSpy = sinon.spy(stack, 'handle');
+      getHandleSpy = sinon.spy(getStack, 'handle');
+    }
+    postStack = routeStack('/payment', 'post') || routeStack('/services/payment', 'post');
+    if (typeof postStack === 'undefined') {
+      postHandleSpy = { restore: () => { } };
+    } else {
+      postHandleSpy = sinon.spy(postStack, 'handle');
     }
     writeFileSyncStub = sinon.stub(fs, 'writeFileSync');
   });
 
   it('should contain payment route @app-payment-feature', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
-    const request = { body: { amount: 325 } };
 
+    assert(typeof getHandleSpy === 'function', 'The transfer get route may not exist.');
+    const getReq = mockReq({});
+    const getRes = mockRes();
+    getHandleSpy(getReq, getRes);
+
+    assert(getRes.render.called, 'The payment post route may have not been created.');
+    assert(
+      getRes.render.calledWithExactly('payment'),
+      '`res.render` is not being called with the correct arguments.'
+    );
+
+    assert(typeof postHandleSpy === 'function', 'The transfer post route may not exist.');
     let accounts;
-
     try {
       accounts = appModule.__get__('accounts');
     } catch (err) {
       assert(accounts !== undefined, 'Has the `accounts` variable been created in `app.js`?');
     }
-
-    const req = mockReq(request);
-    const res = mockRes();
+    const postRequest = { body: { amount: 325 } };
+    const postReq = mockReq(postRequest);
+    const postRes = mockRes();
 
     const { available } = accounts.credit;
     const { balance } = accounts.credit;
-    handleSpy(req, res);
+    postHandleSpy(postReq, postRes);
     const newAvailable = accounts.credit.available;
     const newBalance = accounts.credit.balance;
 
-    assert(res.render.called, 'The payment post route may have not been created.');
+    assert(postRes.render.called, 'The payment post route may have not been created.');
     assert(
-      res.render.calledWithExactly('payment', {
+      postRes.render.calledWithExactly('payment', {
         message: 'Payment Successful'
       }),
       '`res.render` is not being called with the correct arguments.'
     );
     assert(
-      balance - request.body.amount === newBalance,
+      balance - postRequest.body.amount === newBalance,
       'Your calculation for the credit balance seem to be incorrect.'
     );
     assert(
-      available + request.body.amount === newAvailable,
+      available + postRequest.body.amount === newAvailable,
       'Your calculation for the available balance seem to be incorrect.'
     );
     assert(
@@ -68,7 +85,8 @@ describe('Payment Feature', () => {
   });
 
   after(() => {
-    handleSpy.restore();
+    getHandleSpy.restore();
+    postHandleSpy.restore();
     writeFileSyncStub.restore();
   });
 });

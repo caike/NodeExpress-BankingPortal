@@ -29,7 +29,7 @@ describe('Transfer post route write JSON', () => {
     };
     const req = mockReq(request);
     const res = mockRes();
-
+    assert(typeof handleSpy === 'function', 'The transfer post route may not exist.');
     handleSpy(req, res);
     assert(
       writeFileSyncStub.called,
