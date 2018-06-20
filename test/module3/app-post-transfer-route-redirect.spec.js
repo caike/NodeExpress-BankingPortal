@@ -6,7 +6,7 @@ describe('Transfer post route redirect', () => {
   let writeFileSyncStub;
 
   before(() => {
-    stack = routeStack('/transfer', 'post');
+    stack = routeStack('/transfer', 'post') || routeStack('/services/transfer', 'post');
     handleSpy = sinon.spy(stack, 'handle');
     writeFileSyncStub = sinon.stub(fs, 'writeFileSync');
   });

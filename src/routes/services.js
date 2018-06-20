@@ -20,7 +20,6 @@ router.post('/payment', (req, res) => {
 
   writeJSON();
   res.render('payment', {
-    account: accounts.credit,
     message: 'Payment Successful'
   });
 });

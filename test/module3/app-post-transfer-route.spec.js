@@ -2,7 +2,7 @@ describe('Transfer post route', () => {
   let stub;
   let stack;
   before(() => {
-    stack = routeStack('/transfer', 'post');
+    stack = routeStack('/transfer', 'post') || routeStack('/services/transfer', 'post');
     stub = sinon.stub(stack, 'handle');
   });
 
