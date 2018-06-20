@@ -7,7 +7,13 @@ describe('Transfer post route redirect', () => {
 
   before(() => {
     stack = routeStack('/transfer', 'post') || routeStack('/services/transfer', 'post');
-    handleSpy = sinon.spy(stack, 'handle');
+    if (typeof stack === 'undefined') {
+      handleSpy = {
+        restore: () => { }
+      };
+    } else {
+      handleSpy = sinon.spy(stack, 'handle');
+    }
     writeFileSyncStub = sinon.stub(fs, 'writeFileSync');
   });
 

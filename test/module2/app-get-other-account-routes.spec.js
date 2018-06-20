@@ -3,7 +3,13 @@ const R = require('ramda');
 describe('Checking and Credit Routes', () => {
   let spy;
   before(() => {
-    spy = sinon.spy(app, 'render');
+    if (typeof app === 'undefined') {
+      spy = {
+        restore: () => {}
+      };
+    } else {
+      spy = sinon.spy(app, 'render');
+    }
   });
 
   it('should contain the other account routes @app-get-other-account-routes', done => {

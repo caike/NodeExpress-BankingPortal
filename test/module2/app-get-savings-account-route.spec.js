@@ -3,7 +3,13 @@ const R = require('ramda');
 describe('app.js contains a Savings Route', () => {
   let spy;
   before(() => {
-    spy = sinon.spy(app, 'render');
+    if (typeof app === 'undefined') {
+      spy = {
+        restore: () => { }
+      };
+    } else {
+      spy = sinon.spy(app, 'render');
+    }
   });
 
   it('should contain the savings route @app-get-savings-account-route', done => {

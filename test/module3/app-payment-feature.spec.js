@@ -7,8 +7,13 @@ describe('Payment Feature', () => {
   let writeFileSyncStub;
 
   before(() => {
-    stack = routeStack('/payment', 'post') || routeStack('/services/payment', 'post');
-    handleSpy = sinon.spy(stack, 'handle');
+    if (typeof stack === 'undefined') {
+      handleSpy = {
+        restore: () => { }
+      };
+    } else {
+      handleSpy = sinon.spy(stack, 'handle');
+    }
     writeFileSyncStub = sinon.stub(fs, 'writeFileSync');
   });
 

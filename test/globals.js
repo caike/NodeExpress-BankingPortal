@@ -70,10 +70,14 @@ const getAllStacks = (app, path, endpoints) => {
 };
 
 const routeStack = (path, method) => {
+  if (app === undefined) {
+    return undefined;
+  }
+
   const allStacks = getAllStacks(app);
   let found;
   allStacks.forEach(stack => {
-    if (stack.path === (method + ' ' + path)) {
+    if (stack.path === method + ' ' + path) {
       found = stack.stack;
     }
   });

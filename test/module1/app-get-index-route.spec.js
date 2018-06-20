@@ -6,7 +6,13 @@ describe('Default Route', () => {
 
   before(() => {
     stack = routeStack('/', 'get');
-    handleSpy = sinon.spy(stack, 'handle');
+    if (typeof stack === 'undefined') {
+      handleSpy = {
+        restore: () => {}
+      };
+    } else {
+      handleSpy = sinon.spy(stack, 'handle');
+    }
   });
 
   it('should contain the index route @app-get-index-route', () => {
@@ -17,7 +23,10 @@ describe('Default Route', () => {
     handleSpy(req, res);
     assert(res.render.called, 'The index route may have not been created.');
     assert(res.render.firstCall.args[0] === 'index', 'The index route does not seem to be rendering the `index` view.');
-    assert(R.has('title')(res.render.firstCall.args[1]), 'The index route maybe missing an object with a `title: "Index"` key value pair.');
+    assert(
+      R.has('title')(res.render.firstCall.args[1]),
+      'The index route maybe missing an object with a `title: "Index"` key value pair.'
+    );
   });
 
   after(() => {

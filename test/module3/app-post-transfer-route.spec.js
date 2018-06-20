@@ -3,7 +3,11 @@ describe('Transfer post route', () => {
   let stack;
   before(() => {
     stack = routeStack('/transfer', 'post') || routeStack('/services/transfer', 'post');
-    stub = sinon.stub(stack, 'handle');
+    if (typeof stack === 'undefined') {
+      stub = { restore: () => {} };
+    } else {
+      stub = sinon.stub(stack, 'handle');
+    }
   });
 
   it('should contain the post transfer route @app-post-transfer-route', () => {

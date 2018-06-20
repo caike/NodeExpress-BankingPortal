@@ -4,7 +4,13 @@ describe('Transfer get route', () => {
 
   before(() => {
     stack = routeStack('/transfer', 'get') || routeStack('/services/transfer', 'get');
-    handleSpy = sinon.spy(stack, 'handle');
+    if (typeof stack === 'undefined') {
+      handleSpy = {
+        restore: () => {}
+      };
+    } else {
+      handleSpy = sinon.spy(stack, 'handle');
+    }
   });
 
   it('should contain the get transfer route @app-get-transfer-route', () => {

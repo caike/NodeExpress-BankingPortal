@@ -3,7 +3,13 @@ const R = require('ramda');
 describe('Updated Index Route', () => {
   let spy;
   before(() => {
-    spy = sinon.spy(app, 'render');
+    if (typeof app === 'undefined') {
+      spy = {
+        restore: () => { }
+      };
+    } else {
+      spy = sinon.spy(app, 'render');
+    }
   });
 
   it('should contain the index route with accounts @app-update-index-route', done => {
