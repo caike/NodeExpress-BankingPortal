@@ -8,7 +8,7 @@ describe('Default Route', () => {
     stack = routeStack('/', 'get');
     if (typeof stack === 'undefined') {
       handleSpy = {
-        restore: () => {}
+        restore: () => { }
       };
     } else {
       handleSpy = sinon.spy(stack, 'handle');
@@ -20,6 +20,7 @@ describe('Default Route', () => {
     const req = mockReq();
     const res = mockRes();
 
+    assert(typeof handleSpy === 'function', 'No routes have been created.');
     handleSpy(req, res);
     assert(res.render.called, 'The index route may have not been created.');
     assert(res.render.firstCall.args[0] === 'index', 'The index route does not seem to be rendering the `index` view.');

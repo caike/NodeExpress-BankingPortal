@@ -34,6 +34,10 @@ const getAllStacks = (app, path, endpoints) => {
   const regExp = /^\/\^\\\/(?:(:?[\w\\.-]*(?:\\\/:?[\w\\.-]*)*)|(\(\?:\(\[\^\\\/]\+\?\)\)))\\\/.*/;
   const stack = app.stack || (app._router && app._router.stack);
 
+  if (typeof stack === 'undefined') {
+    return undefined;
+  }
+
   endpoints = endpoints || [];
   path = path || '';
 
@@ -70,11 +74,7 @@ const getAllStacks = (app, path, endpoints) => {
 };
 
 const routeStack = (path, method) => {
-  if (app === undefined) {
-    return undefined;
-  }
-
-  const allStacks = getAllStacks(app);
+  const allStacks = getAllStacks(app) || [];
   let found;
   allStacks.forEach(stack => {
     if (stack.path === method + ' ' + path) {
