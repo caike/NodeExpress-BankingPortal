@@ -17,7 +17,7 @@ As you move through the modules, you can run module-specific tests with the scri
 
 ## Previewing Your Work
 
-In order to see your changes in a browser, you can run `npm run dev` to start the application, and when you visit `http://localhost:3000` in a browser, you should see your components rendered.
+In order to see your changes in a browser, you can run `npm start` to start the application, and when you visit `http://localhost:3000` in a browser, you should see your components rendered.
 
 # Module 01 - Use Express to Create a Server
 
