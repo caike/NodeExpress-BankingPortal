@@ -5,7 +5,7 @@ describe('Require Express and Create `app` const', () => {
     try {
       express = appModule.__get__('express');
     } catch (err) {
-      assert(express !== undefined, 'Has the the `express` framework been required in `app.js`?');
+      assert(express !== undefined, 'Has the `express` framework been required in `app.js`?');
     }
   });
 });

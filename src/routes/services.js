@@ -5,8 +5,6 @@ const { accounts, writeJSON } = require('../data');
 
 router.get('/transfer', (req, res) => res.render('transfer'));
 
-// Steps in views/transfer.ejs
-
 router.post('/transfer', (req, res) => {
   accounts[req.body.from].balance -= req.body.amount;
   accounts[req.body.to].balance += parseInt(req.body.amount, 10);
@@ -15,9 +13,7 @@ router.post('/transfer', (req, res) => {
   res.render('transfer', { message: 'Transfer Completed' });
 });
 
-router.get('/payment', (req, res) =>
-  res.render('payment', { account: accounts.credit })
-);
+router.get('/payment', (req, res) => res.render('payment', { account: accounts.credit }));
 router.post('/payment', (req, res) => {
   accounts.credit.balance -= req.body.amount;
   accounts.credit.available += parseInt(req.body.amount, 10);

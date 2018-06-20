@@ -244,11 +244,11 @@ Still in `app.js` and in the function body of the post route, use the `writeFile
 
 ## 5.7 - Use the Routes
 
-@app-use-account-routes In `app.js` where your account routes used to be, call the `use` function on `app` with two arguments. The first argument should be `/accounts` and the second is the `accountRoutes` const.
+@app-use-account-routes In `app.js` where your account routes used to be, call the `use` function on `app` with two arguments. The first argument should be `/account` and the second is the `accountRoutes` const.
 
 ## 5.8 - Create a Services Routes File
 
-@routes-accounts-js-create-file Create a new file called `services.js` in the directory `src/routes/`.
+@routes-services-js-create-file Create a new file called `services.js` in the directory `src/routes/`.
 
 ## 5.9 - Require Express
 
