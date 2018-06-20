@@ -1,0 +1,724 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "path"
+          },
+          "init": {
+            "type": "CallExpression",
+            "callee": {
+              "type": "Identifier",
+              "name": "require"
+            },
+            "arguments": [
+              {
+                "type": "Literal",
+                "value": "path",
+                "raw": "'path'"
+              }
+            ]
+          }
+        }
+      ],
+      "kind": "const"
+    },
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "express"
+          },
+          "init": {
+            "type": "CallExpression",
+            "callee": {
+              "type": "Identifier",
+              "name": "require"
+            },
+            "arguments": [
+              {
+                "type": "Literal",
+                "value": "express",
+                "raw": "'express'"
+              }
+            ]
+          }
+        }
+      ],
+      "kind": "const"
+    },
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "app"
+          },
+          "init": {
+            "type": "CallExpression",
+            "callee": {
+              "type": "Identifier",
+              "name": "express"
+            },
+            "arguments": []
+          }
+        }
+      ],
+      "kind": "const"
+    },
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "ObjectPattern",
+            "properties": [
+              {
+                "type": "Property",
+                "key": {
+                  "type": "Identifier",
+                  "name": "accounts"
+                },
+                "computed": false,
+                "value": {
+                  "type": "Identifier",
+                  "name": "accounts"
+                },
+                "kind": "init",
+                "method": false,
+                "shorthand": true
+              },
+              {
+                "type": "Property",
+                "key": {
+                  "type": "Identifier",
+                  "name": "users"
+                },
+                "computed": false,
+                "value": {
+                  "type": "Identifier",
+                  "name": "users"
+                },
+                "kind": "init",
+                "method": false,
+                "shorthand": true
+              }
+            ]
+          },
+          "init": {
+            "type": "CallExpression",
+            "callee": {
+              "type": "Identifier",
+              "name": "require"
+            },
+            "arguments": [
+              {
+                "type": "Literal",
+                "value": "./data",
+                "raw": "'./data'"
+              }
+            ]
+          }
+        }
+      ],
+      "kind": "const"
+    },
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "accountRoutes"
+          },
+          "init": {
+            "type": "CallExpression",
+            "callee": {
+              "type": "Identifier",
+              "name": "require"
+            },
+            "arguments": [
+              {
+                "type": "Literal",
+                "value": "./routes/accounts",
+                "raw": "'./routes/accounts'"
+              }
+            ]
+          }
+        }
+      ],
+      "kind": "const"
+    },
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "servicesRoutes"
+          },
+          "init": {
+            "type": "CallExpression",
+            "callee": {
+              "type": "Identifier",
+              "name": "require"
+            },
+            "arguments": [
+              {
+                "type": "Literal",
+                "value": "./routes/services",
+                "raw": "'./routes/services'"
+              }
+            ]
+          }
+        }
+      ],
+      "kind": "const"
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "MemberExpression",
+          "computed": false,
+          "object": {
+            "type": "Identifier",
+            "name": "app"
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "set"
+          }
+        },
+        "arguments": [
+          {
+            "type": "Literal",
+            "value": "views",
+            "raw": "'views'"
+          },
+          {
+            "type": "CallExpression",
+            "callee": {
+              "type": "MemberExpression",
+              "computed": false,
+              "object": {
+                "type": "Identifier",
+                "name": "path"
+              },
+              "property": {
+                "type": "Identifier",
+                "name": "join"
+              }
+            },
+            "arguments": [
+              {
+                "type": "Identifier",
+                "name": "__dirname"
+              },
+              {
+                "type": "Literal",
+                "value": "views",
+                "raw": "'views'"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "MemberExpression",
+          "computed": false,
+          "object": {
+            "type": "Identifier",
+            "name": "app"
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "set"
+          }
+        },
+        "arguments": [
+          {
+            "type": "Literal",
+            "value": "view engine",
+            "raw": "'view engine'"
+          },
+          {
+            "type": "Literal",
+            "value": "ejs",
+            "raw": "'ejs'"
+          }
+        ]
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "MemberExpression",
+          "computed": false,
+          "object": {
+            "type": "Identifier",
+            "name": "app"
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "use"
+          }
+        },
+        "arguments": [
+          {
+            "type": "CallExpression",
+            "callee": {
+              "type": "MemberExpression",
+              "computed": false,
+              "object": {
+                "type": "Identifier",
+                "name": "express"
+              },
+              "property": {
+                "type": "Identifier",
+                "name": "urlencoded"
+              }
+            },
+            "arguments": [
+              {
+                "type": "ObjectExpression",
+                "properties": [
+                  {
+                    "type": "Property",
+                    "key": {
+                      "type": "Identifier",
+                      "name": "extended"
+                    },
+                    "computed": false,
+                    "value": {
+                      "type": "Literal",
+                      "value": true,
+                      "raw": "true"
+                    },
+                    "kind": "init",
+                    "method": false,
+                    "shorthand": false
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "MemberExpression",
+          "computed": false,
+          "object": {
+            "type": "Identifier",
+            "name": "app"
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "use"
+          }
+        },
+        "arguments": [
+          {
+            "type": "CallExpression",
+            "callee": {
+              "type": "MemberExpression",
+              "computed": false,
+              "object": {
+                "type": "Identifier",
+                "name": "express"
+              },
+              "property": {
+                "type": "Identifier",
+                "name": "static"
+              }
+            },
+            "arguments": [
+              {
+                "type": "CallExpression",
+                "callee": {
+                  "type": "MemberExpression",
+                  "computed": false,
+                  "object": {
+                    "type": "Identifier",
+                    "name": "path"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "join"
+                  }
+                },
+                "arguments": [
+                  {
+                    "type": "Identifier",
+                    "name": "__dirname"
+                  },
+                  {
+                    "type": "Literal",
+                    "value": "public",
+                    "raw": "'public'"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "MemberExpression",
+          "computed": false,
+          "object": {
+            "type": "Identifier",
+            "name": "app"
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "get"
+          }
+        },
+        "arguments": [
+          {
+            "type": "Literal",
+            "value": "/",
+            "raw": "'/'"
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "id": null,
+            "params": [
+              {
+                "type": "Identifier",
+                "name": "req"
+              },
+              {
+                "type": "Identifier",
+                "name": "res"
+              }
+            ],
+            "body": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                  "type": "Identifier",
+                  "name": "res"
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "render"
+                }
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "index",
+                  "raw": "'index'"
+                },
+                {
+                  "type": "ObjectExpression",
+                  "properties": [
+                    {
+                      "type": "Property",
+                      "key": {
+                        "type": "Identifier",
+                        "name": "title"
+                      },
+                      "computed": false,
+                      "value": {
+                        "type": "Literal",
+                        "value": "Accounts Summary",
+                        "raw": "'Accounts Summary'"
+                      },
+                      "kind": "init",
+                      "method": false,
+                      "shorthand": false
+                    },
+                    {
+                      "type": "Property",
+                      "key": {
+                        "type": "Identifier",
+                        "name": "accounts"
+                      },
+                      "computed": false,
+                      "value": {
+                        "type": "Identifier",
+                        "name": "accounts"
+                      },
+                      "kind": "init",
+                      "method": false,
+                      "shorthand": true
+                    }
+                  ]
+                }
+              ]
+            },
+            "generator": false,
+            "expression": true,
+            "async": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "MemberExpression",
+          "computed": false,
+          "object": {
+            "type": "Identifier",
+            "name": "app"
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "get"
+          }
+        },
+        "arguments": [
+          {
+            "type": "Literal",
+            "value": "/profile",
+            "raw": "'/profile'"
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "id": null,
+            "params": [
+              {
+                "type": "Identifier",
+                "name": "req"
+              },
+              {
+                "type": "Identifier",
+                "name": "res"
+              }
+            ],
+            "body": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                  "type": "Identifier",
+                  "name": "res"
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "render"
+                }
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "profile",
+                  "raw": "'profile'"
+                },
+                {
+                  "type": "ObjectExpression",
+                  "properties": [
+                    {
+                      "type": "Property",
+                      "key": {
+                        "type": "Identifier",
+                        "name": "user"
+                      },
+                      "computed": false,
+                      "value": {
+                        "type": "MemberExpression",
+                        "computed": true,
+                        "object": {
+                          "type": "Identifier",
+                          "name": "users"
+                        },
+                        "property": {
+                          "type": "Literal",
+                          "value": 0,
+                          "raw": "0"
+                        }
+                      },
+                      "kind": "init",
+                      "method": false,
+                      "shorthand": false
+                    }
+                  ]
+                }
+              ]
+            },
+            "generator": false,
+            "expression": true,
+            "async": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "MemberExpression",
+          "computed": false,
+          "object": {
+            "type": "Identifier",
+            "name": "app"
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "use"
+          }
+        },
+        "arguments": [
+          {
+            "type": "Literal",
+            "value": "/account",
+            "raw": "'/account'"
+          },
+          {
+            "type": "Identifier",
+            "name": "accountRoutes"
+          }
+        ]
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "MemberExpression",
+          "computed": false,
+          "object": {
+            "type": "Identifier",
+            "name": "app"
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "use"
+          }
+        },
+        "arguments": [
+          {
+            "type": "Literal",
+            "value": "/services",
+            "raw": "'/services'"
+          },
+          {
+            "type": "Identifier",
+            "name": "servicesRoutes"
+          }
+        ]
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "CallExpression",
+        "callee": {
+          "type": "MemberExpression",
+          "computed": false,
+          "object": {
+            "type": "Identifier",
+            "name": "app"
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "listen"
+          }
+        },
+        "arguments": [
+          {
+            "type": "Literal",
+            "value": "3000",
+            "raw": "'3000'"
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "id": null,
+            "params": [],
+            "body": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "computed": false,
+                "object": {
+                  "type": "Identifier",
+                  "name": "console"
+                },
+                "property": {
+                  "type": "Identifier",
+                  "name": "log"
+                }
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "value": "PS Project Running on port 3000!",
+                  "raw": "'PS Project Running on port 3000!'"
+                }
+              ]
+            },
+            "generator": false,
+            "expression": true,
+            "async": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+          "type": "MemberExpression",
+          "computed": false,
+          "object": {
+            "type": "Identifier",
+            "name": "module"
+          },
+          "property": {
+            "type": "Identifier",
+            "name": "exports"
+          }
+        },
+        "right": {
+          "type": "Identifier",
+          "name": "app"
+        }
+      }
+    }
+  ],
+  "sourceType": "script"
+}

@@ -52,20 +52,16 @@ In order to see your changes in a browser, you can run `npm run dev` to start th
 
 @index-ejs-create-view In the newly created file `index.ejs` complete the following:
 
-- Include `header.ejs` **Hint: <%- -%>**
+- Include `header.ejs` **Hint: <%- %>**
 - Add a `div` element with a class of `container`.
 - In the container div display the value of the `title` key in an `h1` element. **Hint: <%= %>**
 - Add an anchor element below the `h1` that points to the `/profile` URL path, and has the text content “Profile”.
 - Below the container div add a line break and another anchor element that points to the `/transfer` URL path with the text content `Transfer`.
-- Include `footer.ejs` **Hint: <%- -%>**
+- Include `footer.ejs` **Hint: <%- %>**
 
 ## 1.8 - Start Server
 
 @app-listen-console-log In `app.js` using the `listen` function to create a server that listens on port `3000` and then prints the message “PS Project Running on port 3000!” to the console after the server is created.
-
-## 1.9 - Export App
-
-@app-module-exports-app In order for your application to be tested please add the line `module.exports = app` to `app.js` .
 
 # Module 02 - File Handling and Routing
 
@@ -79,11 +75,11 @@ In order to see your changes in a browser, you can run `npm run dev` to start th
 
 ## 2.3 - Update the Index Route
 
-@app-update-route In `app.js` update the object passed to the existing index route. The `title` should be “Accounts Summary”. A new key value pair should be added, `accounts: accounts`.
+@app-update-index-route In `app.js` update the object passed to the existing index route. The `title` should be “Accounts Summary”. A new key value pair should be added, `accounts: accounts`.
 
 ## 2.4 - Update the Index View
 
-@index-ejs-update-view In `index.ejs` and after the ejs markup that displays the `title`, add the ejs markup to include the `summary` view for each account in the `accounts` variable, savings, checking, and credit. **Hint: you will have three include statements(`<%- -%>`), each `include` function will be passed a different account, i.e `{ account: accounts.checking }`.**
+@index-ejs-update-view In `index.ejs` and after the ejs markup that displays the `title`, add the ejs markup to include the `summary` view for each account in the `accounts` variable, savings, checking, and credit. **Hint: you will have three include statements(`<%- %>`), each `include` function will be passed a different account, i.e `{ account: accounts.checking }`.**
 
 ## 2.5 - Create the Savings Account Route
 
@@ -93,7 +89,7 @@ In order to see your changes in a browser, you can run `npm run dev` to start th
 
 ## 2.6 - Create the Checking & Credit Routes
 
-@app-get-checking-account-route Now that you have created the savings account route, create similar routes for the checking and credit accounts in the `app.js` file.
+@app-get-other-account-routes Now that you have created the savings account route, create similar routes for the checking and credit accounts in the `app.js` file.
 
 ## 2.7 - Show Account Transactions
 
@@ -115,11 +111,11 @@ In order to see your changes in a browser, you can run `npm run dev` to start th
 
 @profile-ejs-create-view In the newly created file `profile.ejs` complete the following:
 
-- Include `header.ejs` **Hint: <%- -%>**
+- Include `header.ejs` **Hint: <%- %>**
 - Add an `h1` element with the text content `Profile`
 - Add a `div` element below the `h1` that displays each detail of the `user` object on a new line, name, username, phone, email, and address.
 - Below the `div` add a line break, then an anchor element that points to the root URL path and has the text content `Back to Account Summary`.
-- Include `footer.ejs` **Hint: <%- -%>**
+- Include `footer.ejs` **Hint: <%- %>**
 
 # Module 03 - Handling Form Data
 
@@ -190,11 +186,11 @@ Still in `app.js` and in the function body of the post route, use the `writeFile
 
 ## 4.3 - Transition Account Data to Data Library
 
-@data-js-transition-const-accounts In `app.js` locate the lines that are responsible for reading and parsing JSON from the `src/json/accounts.json` file. Cut and paste them to the new `data.js` file below the require statements.
+@data-js-transition-const-accounts In `app.js` locate the lines that are responsible for reading and parsing JSON from the `src/json/accounts.json` file. Copy and paste them to the new `data.js` file below the require statements.
 
 ## 4.4 - Transition User Data to Data Library
 
-@data-js-transition-const-users In `app.js` locate the lines that are responsible for reading and parsing JSON from the `src/json/users.json` file. Cut and paste them to the new `data.js` file below the `accounts` const.
+@data-js-transition-const-users In `app.js` locate the lines that are responsible for reading and parsing JSON from the `src/json/users.json` file. Copy and paste them to the new `data.js` file below the `accounts` const.
 
 ## 4.5 - Write JSON Function
 
@@ -210,7 +206,7 @@ Still in `app.js` and in the function body of the post route, use the `writeFile
 
 ## 4.8 - Require Data Library
 
-@app-js-require-data-js Back In `app.js` require `data.js` and at the same time use object destructing to create three constants for `accounts`, `users`, and `writeJSON`.
+@app-js-require-data-js Back In `app.js` require `data.js` and at the same time use object destructing to create three constants for `accounts`, `users`, and `writeJSON`. Remove the lines in `app.js` that create the `accountData`, `accounts`, `userData`, and `users` consts. `accounts`, `users`, and the `writeJSON` function are now brought in by the require statement.
 
 ## 4.9 - Function Call Transfer
 
@@ -218,7 +214,7 @@ Still in `app.js` and in the function body of the post route, use the `writeFile
 
 ## 4.10 - Function Call Payments
 
-@app-js-call-write-json-payments In `app.js` locate the lines in the `payment` post route function body that are responsible for writing JSON data to a file and replace them with a call to the `writeJSON()` function.
+@app-js-call-write-json-payment In `app.js` locate the lines in the `payment` post route function body that are responsible for writing JSON data to a file and replace them with a call to the `writeJSON()` function.
 
 # Module 05 - Using the Express Router
 
@@ -248,11 +244,11 @@ Still in `app.js` and in the function body of the post route, use the `writeFile
 
 ## 5.7 - Use the Routes
 
-@app-use-account-routes In `app.js` where your account routes used to be, call the `use` function on `app` with two arguments. The first argument should be `/accounts` and the second is the `accountRoutes` const.
+@app-use-account-routes In `app.js` where your account routes used to be, call the `use` function on `app` with two arguments. The first argument should be `/account` and the second is the `accountRoutes` const.
 
 ## 5.8 - Create a Services Routes File
 
-@routes-accounts-js-create-file Create a new file called `services.js` in the directory `src/routes/`.
+@routes-services-js-create-file Create a new file called `services.js` in the directory `src/routes/`.
 
 ## 5.9 - Require Express
 

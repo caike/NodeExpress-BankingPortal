@@ -1,0 +1,22 @@
+describe('Transfer post route', () => {
+  let stub;
+  let stack;
+  before(() => {
+    stack = routeStack('/transfer', 'post') || routeStack('/services/transfer', 'post');
+    stub = sinon.stub(stack, 'handle');
+  });
+
+  it('should contain the post transfer route @app-post-transfer-route', () => {
+    assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
+    const request = { body: { from: 'savings', to: 'checking', amount: 100 } };
+    const req = mockReq(request);
+    const res = mockRes();
+
+    stub(req, res);
+    assert(stub.called, 'The transfer post route may have not be created yet.');
+  });
+
+  after(() => {
+    stub.restore();
+  });
+});
