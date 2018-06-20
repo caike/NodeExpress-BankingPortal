@@ -40,15 +40,11 @@ In order to see your changes in a browser, you can run `npm start` to start the 
 - In app.js call the `use` function of `app` with a call to the `express.static()` function as the only parameter.
 - `express.static()` should be passed the full path to the `public` directory. **Hint: `path.join()` & `__dirname`**
 
-## 1.5 - Create the Index Route
-
-@app-get-index-route create a `get` route that points at the root URL path ‘/‘. Render the `index` view (created in the next step) and pass an object with a single key value pair, `title: “Index”`.
-
-## 1.6 - Create the Index View File
+## 1.5 - Create the Index View File
 
 @index-ejs-create-view-file Create a new file called `index.ejs` in the `src/views/` directory.
 
-## 1.7 - Create the Index View
+## 1.6 - Create the Index View
 
 @index-ejs-create-view In the newly created file `index.ejs` complete the following:
 
@@ -59,9 +55,13 @@ In order to see your changes in a browser, you can run `npm start` to start the 
 - Below the container div add a line break and another anchor element that points to the `/transfer` URL path with the text content `Transfer`.
 - Include `footer.ejs` **Hint: <%- %>**
 
+## 1.7 - Create the Index Route
+
+@app-get-index-route In `app.js` create a `get` route that points at the root URL path ‘/‘. Render the `index` view (created in the next step) and pass an object with a single key value pair, `title: 'Index'`.
+
 ## 1.8 - Start Server
 
-@app-listen-console-log In `app.js` using the `listen` function to create a server that listens on port `3000` and then prints the message “PS Project Running on port 3000!” to the console after the server is created.
+@app-listen-console-log In `app.js` using the `listen` function to create a server that listens on port `3000` and then prints the message `PS Project Running on port 3000!` to the console after the server is created.
 
 # Module 02 - File Handling and Routing
 

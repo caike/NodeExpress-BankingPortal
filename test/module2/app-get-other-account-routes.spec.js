@@ -1,51 +1,54 @@
 const R = require('ramda');
 
 describe('Checking and Credit Routes', () => {
-  let spy;
+  let creditStack;
+  let checkingStack;
+  let creditHandleSpy;
+  let checkingHandleSpy;
+
   before(() => {
-    if (typeof app === 'undefined') {
-      spy = {
-        restore: () => {}
-      };
+    creditStack = routeStack('/credit', 'get');
+    if (typeof creditStack === 'undefined') {
+      creditHandleSpy = { restore: () => { } };
     } else {
-      spy = sinon.spy(app, 'render');
+      creditHandleSpy = sinon.spy(creditStack, 'handle');
+    }
+    checkingStack = routeStack('/checking', 'get');
+    if (typeof checkingStack === 'undefined') {
+      checkingHandleSpy = { restore: () => { } };
+    } else {
+      checkingHandleSpy = sinon.spy(checkingStack, 'handle');
     }
   });
 
-  it('should contain the other account routes @app-get-other-account-routes', done => {
+  it('should contain the index route @app-get-index-route', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
-    request(app)
-      .get('/checking')
-      .expect(() => {
-        assert(spy.called, 'The checking route may have not been created.');
-        assert(
-          spy.firstCall.args[0] === 'account',
-          'The checking route does not seem to be rendering the `account` view.'
-        );
-        assert(
-          R.propEq('unique_name', 'checking')(spy.firstCall.args[1].account),
-          'The checking route maybe missing a checking account object.'
-        );
-      });
+    const req = mockReq();
+    const res = mockRes();
 
-    request(app)
-      .get('/credit')
-      .expect(() => {
-        assert(spy.called, 'The credit route may have not been created.');
-        assert(
-          spy.firstCall.args[0] === 'account',
-          'The credit route does not seem to be rendering the `account` view.'
-        );
-        assert(
-          R.propEq('unique_name', 'credit')(spy.firstCall.args[1].account),
-          'The credit route maybe missing a credit account object.'
-        );
-      });
+    assert(typeof creditHandleSpy === 'function', 'The credit get route has not been created.');
+    creditHandleSpy(req, res);
+    assert(res.render.called, 'The index route may have not been created.');
+    assert(res.render.firstCall.args[0] === 'account', 'The index route does not seem to be rendering the `index` view.');
+    assert(typeof res.render.firstCall.args[1] === 'object', 'res.render maybe missing arguments');
+    assert(
+      R.has('title')(res.render.firstCall.args[1]),
+      'The index route maybe missing an object with a account key value pair.'
+    );
 
-    done();
+    assert(typeof checkingHandleSpy === 'function', 'The credit get route has not been created.');
+    checkingHandleSpy(req, res);
+    assert(res.render.called, 'The index route may have not been created.');
+    assert(res.render.firstCall.args[0] === 'account', 'The index route does not seem to be rendering the `index` view.');
+    assert(typeof res.render.firstCall.args[1] === 'object', 'res.render maybe missing arguments');
+    assert(
+      R.has('account')(res.render.firstCall.args[1]),
+      'The index route maybe missing an object with a account key value pair.'
+    );
   });
 
   after(() => {
-    spy.restore();
+    creditHandleSpy.restore();
+    checkingHandleSpy.restore();
   });
 });

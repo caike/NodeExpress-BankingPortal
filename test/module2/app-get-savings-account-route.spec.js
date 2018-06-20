@@ -1,36 +1,40 @@
 const R = require('ramda');
 
-describe('app.js contains a Savings Route', () => {
-  let spy;
+describe('Savings Route', () => {
+  let stack;
+  let handleSpy;
+
   before(() => {
-    if (typeof app === 'undefined') {
-      spy = {
-        restore: () => { }
+    stack = routeStack('/', 'get');
+    if (typeof stack === 'undefined') {
+      handleSpy = {
+        restore: () => {}
       };
     } else {
-      spy = sinon.spy(app, 'render');
+      handleSpy = sinon.spy(stack, 'handle');
     }
   });
 
-  it('should contain the savings route @app-get-savings-account-route', done => {
+  it('should contain the index route @app-get-index-route', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
-    let route;
-    if (request(app).get('/account/savings').expect(200)) {
-      route = '/account/savings';
-    } else {
-      route = '/savings';
-    }
-    request(app)
-      .get(route)
-      .expect(() => {
-        assert(spy.called, 'The savings route may have not been created.');
-        assert(spy.firstCall.args[0] === 'account', 'The savings route does not seem to be rendering the `account` view.');
-        assert(R.propEq('unique_name', 'savings')(spy.firstCall.args[1].account), 'The savings route maybe missing a savings account object.');
-      })
-      .end(done);
+    const req = mockReq();
+    const res = mockRes();
+
+    assert(typeof handleSpy === 'function', 'The credit get route has not been created.');
+    handleSpy(req, res);
+    assert(res.render.called, 'The index route may have not been created.');
+    assert(
+      res.render.firstCall.args[0] === 'account',
+      'The index route does not seem to be rendering the `index` view.'
+    );
+    assert(typeof res.render.firstCall.args[1] === 'object', 'res.render maybe missing arguments');
+    assert(
+      R.has('title')(res.render.firstCall.args[1]),
+      'The index route maybe missing an object with a account key value pair.'
+    );
   });
 
   after(() => {
-    spy.restore();
+    handleSpy.restore();
   });
 });
