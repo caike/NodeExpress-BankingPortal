@@ -5,6 +5,7 @@ describe('Payment Feature', () => {
   let getStack;
   let getHandleSpy;
   let postStack;
+  let postHandleOriginal;
   let postHandleSpy;
   let writeFileSyncStub;
 
@@ -19,6 +20,7 @@ describe('Payment Feature', () => {
     if (typeof postStack === 'undefined') {
       postHandleSpy = { restore: () => {} };
     } else {
+      postHandleOriginal = postStack.handle;
       postHandleSpy = sinon.spy(postStack, 'handle');
     }
     writeFileSyncStub = sinon.stub(fs, 'writeFileSync');
@@ -52,8 +54,14 @@ describe('Payment Feature', () => {
     const newAvailable = accounts.credit.available;
     const newBalance = accounts.credit.balance;
 
-    assert(/accountsJSON/.test(postStack.handle.toString()), 'The transfer post function does not include a `accountsJSON` const.');
-    assert(/JSON.stringify/.test(postStack.handle.toString()), 'The transfer post function does not include a call to `JSON.stringify`.');
+    assert(
+      /accountsJSON/.test(postHandleOriginal.toString()),
+      'The payment post function does not include a `accountsJSON` const.'
+    );
+    assert(
+      /JSON.stringify/.test(postHandleOriginal.toString()),
+      'The payment post function does not include a call to `JSON.stringify`.'
+    );
 
     assert(postRes.render.called, 'The payment post route may have not been created.');
     assert(
