@@ -7,7 +7,7 @@ describe('writeJSON function in data.js', () => {
     assert(fs.existsSync(path.join(process.cwd(), 'src/data.js')), 'The `src/data.js` file does not exist.');
     let writeJSON;
     try {
-      const dataModule = rewire('../src/data');
+      const dataModule = rewire('../../src/data');
       writeJSON = dataModule.__get__('writeJSON');
     } catch (err) {
       assert(writeJSON !== undefined, '`data.js` does not contain a function called writeJSON.');

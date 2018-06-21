@@ -5,7 +5,7 @@ describe('Require `fs` and `path` built-ins in data.js', () => {
     let fs;
     let path;
     try {
-      const dataModule = rewire('../src/data');
+      const dataModule = rewire('../../src/data');
       fs = dataModule.__get__('fs');
       path = dataModule.__get__('path');
     } catch (err) {

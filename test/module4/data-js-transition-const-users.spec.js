@@ -7,7 +7,7 @@ describe('Read user data from `data.js`', () => {
     let users;
     let userData;
     try {
-      const dataModule = rewire('../src/data');
+      const dataModule = rewire('../../src/data');
       userData = dataModule.__get__('userData');
       users = dataModule.__get__('users');
     } catch (err) {
