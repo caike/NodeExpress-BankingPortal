@@ -28,25 +28,25 @@ describe('Update `transfer` view', () => {
       $('select')
         .first()
         .attr('id') === 'from',
-      'The first select is missing an id attribute.'
+      'The first select is missing an id attribute or it has the wrong value.'
     );
     assert(
       $('select')
         .first()
         .attr('name') === 'from',
-      'The first select is missing a name attribute.'
+      'The first select is missing a name attribute or it has the wrong value.'
     );
     assert(
       $('select')
         .last()
         .attr('id') === 'to',
-      'The second select is missing an id attribute.'
+      'The second select is missing an id attribute or it has the wrong value.'
     );
     assert(
       $('select')
         .last()
         .attr('name') === 'to',
-      'The second select is missing an name attribute.'
+      'The second select is missing an name attribute or it has the wrong value.'
     );
   });
 });

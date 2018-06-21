@@ -121,7 +121,7 @@ In order to see your changes in a browser, you can run `npm start` to start the 
 
 ## 3.1 - URL Encoded Middleware
 
-@app-urlencoded-form-data In `app.js` near where you have done your other imports add Express middleware to handle POST data. With the `use` function add the `express.urlencoded` middleware to `app`. Make sure to set the `extended` option to `true`.
+@app-urlencoded-form-data In `app.js` near your other app.use statement add express middleware to handle POST data. With the `use` function add the `express.urlencoded` middleware to `app`. Make sure to set the `extended` option to `true`.
 
 ## 3.2 - Create the Transfer GET Route
 
