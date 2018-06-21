@@ -32,7 +32,7 @@ describe('Checking and Credit Routes', () => {
     assert(res.render.firstCall.args[0] === 'account', 'The credit route does not seem to be rendering the `account` view.');
     assert(typeof res.render.firstCall.args[1] === 'object', 'The credit route res.render maybe missing arguments');
     assert(
-      R.has('title')(res.render.firstCall.args[1]),
+      R.has('account')(res.render.firstCall.args[1]),
       'The credit route maybe missing an object with a account key value pair.'
     );
 
