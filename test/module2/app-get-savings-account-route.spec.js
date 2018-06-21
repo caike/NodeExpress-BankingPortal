@@ -29,7 +29,7 @@ describe('Savings Route', () => {
     );
     assert(typeof res.render.firstCall.args[1] === 'object', 'res.render maybe missing arguments');
     assert(
-      R.has('title')(res.render.firstCall.args[1]),
+      R.has('account')(res.render.firstCall.args[1]),
       'The savings route maybe missing an object with a account key value pair.'
     );
   });
