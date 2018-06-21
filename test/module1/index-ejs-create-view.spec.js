@@ -10,14 +10,14 @@ describe('Create `index` view', () => {
       ejs.compile(file);
     } catch (err) {
       assert(err.code !== 'ENOENT', 'The `index.ejs` view file does not exist.');
-      const errorMessage = err.message.substring(0, err.message.indexOf('compiling ejs') - 1);
-      assert(err.message.indexOf('compiling ejs') < -1, `${errorMessage} compiling index.ejs`);
+      const errorMessage = err.message.substring(0, err.message.indexOf('compiling ejs'));
+      assert(err.message.indexOf('compiling ejs') < -1, ` ${errorMessage}Error compiling index.ejs`);
     }
     assert(/<%-\s+include\(('|")header(\.ejs)?('|")\)(;)?\s*%>/.test(file), 'Have you included the `header` view.');
-    assert(/<%-\s+include\(('|")footer(\.ejs)?('|")\)(;)?\s*%>/.test(file), 'Have you included the `footer` view.');
     assert(/<div\s+class\s*=\s*("|'|\s*)container(\s*|"|')>/.test(file), 'The `div` with a class of `container` can not be found');
-    assert(/<h1>\s*<%=\s*title\s*%>\s*<\/h1>/.test(file), 'The `title` variable seems to be missing.');
+    assert(/<%=\s*title\s*%>/.test(file), 'The `title` variable seems to be missing.');
     assert(/<a\s+href=('|")?\/profile('|")?>\s*(P|p)rofile\s*<\/a>/.test(file), 'The `profile` link seems to be missing.');
     assert(/<a\s+href=('|")?(\/services)?\/transfer('|")?>\s*(T|t)ransfer\s*<\/a>/.test(file), 'The `transfer` link seems to be missing.');
+    assert(/<%-\s+include\(('|")footer(\.ejs)?('|")\)(;)?\s*%>/.test(file), 'Have you included the `footer` view.');
   });
 });

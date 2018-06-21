@@ -3,7 +3,13 @@ const R = require('ramda');
 describe('app.js contains a Profile Route', () => {
   let spy;
   before(() => {
-    spy = sinon.spy(app, 'render');
+    if (typeof app === 'undefined') {
+      spy = {
+        restore: () => { }
+      };
+    } else {
+      spy = sinon.spy(app, 'render');
+    }
   });
 
   it('should contain the profile route @app-get-profile-route', done => {

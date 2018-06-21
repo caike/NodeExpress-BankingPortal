@@ -7,12 +7,19 @@ describe('Transfer post route to balance', () => {
 
   before(() => {
     stack = routeStack('/transfer', 'post') || routeStack('/services/transfer', 'post');
-    handleSpy = sinon.spy(stack, 'handle');
+    if (typeof stack === 'undefined') {
+      handleSpy = {
+        restore: () => { }
+      };
+    } else {
+      handleSpy = sinon.spy(stack, 'handle');
+    }
     writeFileSyncStub = sinon.stub(fs, 'writeFileSync');
   });
 
   it('should calculate `to` balance @app-post-transfer-route-from-balance', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
+    assert(typeof handleSpy === 'function', 'The transfer post route may not exist.');
     const request = { body: { from: 'savings', to: 'checking', amount: 100 } };
 
     let accounts;

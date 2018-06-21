@@ -7,7 +7,13 @@ describe('Transfer post route redirect', () => {
 
   before(() => {
     stack = routeStack('/transfer', 'post') || routeStack('/services/transfer', 'post');
-    handleSpy = sinon.spy(stack, 'handle');
+    if (typeof stack === 'undefined') {
+      handleSpy = {
+        restore: () => { }
+      };
+    } else {
+      handleSpy = sinon.spy(stack, 'handle');
+    }
     writeFileSyncStub = sinon.stub(fs, 'writeFileSync');
   });
 
@@ -22,7 +28,7 @@ describe('Transfer post route redirect', () => {
     };
     const req = mockReq(request);
     const res = mockRes();
-
+    assert(typeof handleSpy === 'function', 'The transfer post route may not exist.');
     handleSpy(req, res);
     assert(res.render.calledWithExactly('transfer', { message: 'Transfer Completed' }), '`res.render` is not being called with the correct arguments.');
   });

@@ -8,7 +8,13 @@ describe('Transfer post route write JSON', () => {
 
   before(() => {
     stack = routeStack('/transfer', 'post') || routeStack('/services/transfer', 'post');
-    handleSpy = sinon.spy(stack, 'handle');
+    if (typeof stack === 'undefined') {
+      handleSpy = {
+        restore: () => {}
+      };
+    } else {
+      handleSpy = sinon.spy(stack, 'handle');
+    }
     writeFileSyncStub = sinon.stub(fs, 'writeFileSync');
   });
 
@@ -23,12 +29,9 @@ describe('Transfer post route write JSON', () => {
     };
     const req = mockReq(request);
     const res = mockRes();
-
+    assert(typeof handleSpy === 'function', 'The transfer post route may not exist.');
     handleSpy(req, res);
-    assert(
-      writeFileSyncStub.called,
-      '`writeFileSync` was not called.'
-    );
+    assert(writeFileSyncStub.called, '`writeFileSync` was not called.');
     assert(
       writeFileSyncStub.firstCall.args[0] === path.join(__dirname, '../../src/json/accounts.json'),
       'The path being passed to `writeFileSync` is incorrect.'
@@ -37,6 +40,7 @@ describe('Transfer post route write JSON', () => {
       typeof writeFileSyncStub.firstCall.args[1] === 'string',
       'The content being passed to `writeFileSync` is not a string.'
     );
+    assert(typeof writeFileSyncStub.firstCall.args[2] !== 'undefined', 'It is best if you encode the string as utf8');
     assert(
       writeFileSyncStub.firstCall.args[2].replace('-', '').toLowerCase() === 'utf8',
       'It is best if you encode the string as utf8'

@@ -1,11 +1,16 @@
+const fs = require('fs');
+const path = require('path');
 const R = require('ramda');
+const rewire = require('rewire');
 
 describe('Move account routes', () => {
   it('`accounts.js` should contain routes @app-require-express-const-app', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
+    assert(fs.existsSync(path.join(process.cwd(), 'src/routes/accounts.js')), 'The `src/routes/accounts.js` file does not exist.');
     let express;
     let router;
     try {
+      const accountsModule = rewire('../../src/routes/accounts');
       express = accountsModule.__get__('express');
       router = accountsModule.__get__('router');
     } catch (err) {
@@ -13,7 +18,7 @@ describe('Move account routes', () => {
       assert(router !== undefined, 'Has the express router been added to `src/routes/accounts.js`?');
     }
     assert(typeof router === 'function', 'Has the router const been set to the express router function?');
-    assert(router.stack.length === 3, 'Were all three routes moved to accounts.js');
+    assert(router.stack.length === 3, 'Were all three routes moved to accounts.js and added to the router');
 
     const getRoutes = [];
     router.stack.forEach(routes => {

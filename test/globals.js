@@ -6,9 +6,6 @@ const sinonChai = require('sinon-chai');
 const { mockReq, mockRes } = require('sinon-express-mock');
 
 const appModule = rewire('../src/app');
-const dataModule = rewire('../src/data');
-const accountsModule = rewire('../src/routes/accounts');
-const servicesModule = rewire('../src/routes/services');
 
 chai.use(sinonChai);
 
@@ -34,8 +31,16 @@ const hasParams = value => {
   return regExp.test(value);
 };
 const getAllStacks = (app, path, endpoints) => {
+  if (typeof app === 'undefined') {
+    return undefined;
+  }
+
   const regExp = /^\/\^\\\/(?:(:?[\w\\.-]*(?:\\\/:?[\w\\.-]*)*)|(\(\?:\(\[\^\\\/]\+\?\)\)))\\\/.*/;
   const stack = app.stack || (app._router && app._router.stack);
+
+  if (typeof stack === 'undefined') {
+    return undefined;
+  }
 
   endpoints = endpoints || [];
   path = path || '';
@@ -73,10 +78,10 @@ const getAllStacks = (app, path, endpoints) => {
 };
 
 const routeStack = (path, method) => {
-  const allStacks = getAllStacks(app);
+  const allStacks = getAllStacks(app) || [];
   let found;
   allStacks.forEach(stack => {
-    if (stack.path === (method + ' ' + path)) {
+    if (stack.path === method + ' ' + path) {
       found = stack.stack;
     }
   });
@@ -92,8 +97,5 @@ Object.assign(global, {
   app,
   routeStack,
   mockReq,
-  mockRes,
-  dataModule,
-  accountsModule,
-  servicesModule
+  mockRes
 });

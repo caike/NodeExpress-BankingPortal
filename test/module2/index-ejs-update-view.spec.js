@@ -3,7 +3,7 @@ const path = require('path');
 const ejs = require('ejs');
 
 describe('Update `index` view', () => {
-  it('should create the index view @index-ejs-update-view', () => {
+  it('should update the index view with account summaries @index-ejs-update-view', () => {
     let file;
     try {
       file = fs.readFileSync(path.join(process.cwd(), 'src/views/index.ejs'), 'utf8');
@@ -25,15 +25,15 @@ describe('Update `index` view', () => {
       'The `profile` link seems to be missing.'
     );
     assert(
-      /<%-\s+include\(('|")summary(\.ejs)?('|")\s*,\s*{\s+account:\s*accounts.savings\s*}\s*\)(;)\s*%>/.test(file),
+      /<%-\s+include\(('|")summary(\.ejs)?('|")\s*,\s*{\s+account:\s*accounts.savings\s*}\s*\)(;)?\s*%>/.test(file),
       'Have you included the `summary` view for the `savings` account.'
     );
     assert(
-      /<%-\s+include\(('|")summary(\.ejs)?('|")\s*,\s*{\s+account:\s*accounts.checking\s*}\s*\)(;)\s*%>/.test(file),
+      /<%-\s+include\(('|")summary(\.ejs)?('|")\s*,\s*{\s+account:\s*accounts.checking\s*}\s*\)(;)?\s*%>/.test(file),
       'Have you included the `summary` view for the `checking` account.'
     );
     assert(
-      /<%-\s+include\(('|")summary(\.ejs)?('|")\s*,\s*{\s+account:\s*accounts.credit\s*}\s*\)(;)\s*%>/.test(file),
+      /<%-\s+include\(('|")summary(\.ejs)?('|")\s*,\s*{\s+account:\s*accounts.credit\s*}\s*\)(;)?\s*%>/.test(file),
       'Have you included the `summary` view for the `credit` account.'
     );
     assert(

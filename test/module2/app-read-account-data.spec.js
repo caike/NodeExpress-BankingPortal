@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const rewire = require('rewire');
 const R = require('ramda');
 
 describe('Read account data', () => {
@@ -9,6 +10,7 @@ describe('Read account data', () => {
     let accountData;
     try {
       if (fs.existsSync(path.join(process.cwd(), 'src/data.js'))) {
+        const dataModule = rewire(path.join(process.cwd(), 'src/data.js'));
         accountData = dataModule.__get__('accountData');
         accounts = dataModule.__get__('accounts');
       } else {
@@ -23,6 +25,7 @@ describe('Read account data', () => {
       !Buffer.isBuffer(accountData),
       'It is best if you specify an encoding like "utf8" when reading from a file (readFileSync function).'
     );
+    assert(typeof accounts === 'object', 'The accounts variable does not contain the correct information.');
     const accountsFound = R.allPass([R.has('savings'), R.has('checking'), R.has('credit')]);
     assert(accountsFound(accounts), 'The accounts variable does not contain the correct information. Check the accounts.json file.');
   });

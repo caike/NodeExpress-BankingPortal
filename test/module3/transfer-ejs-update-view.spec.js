@@ -11,36 +11,42 @@ describe('Update `transfer` view', () => {
       file = fs.readFileSync(path.join(process.cwd(), 'src/views/transfer.ejs'), 'utf8');
       ejs.compile(file);
       $ = cheerio.load(file);
+      assert(
+        $('#transferForm')
+          .attr('method')
+          .toLowerCase() === 'post',
+        'The form is missing a method attribute.'
+      );
     } catch (err) {
-      assert(err.code !== 'ENOENT', 'The `transfer.ejs` view file does not exist.');
-      const errorMessage = err.message.substring(0, err.message.indexOf('compiling ejs') - 1);
-      assert(err.message.indexOf('compiling ejs') < -1, `${errorMessage} compiling index.ejs`);
+      assert(err.message.indexOf('compiling ejs') < -1, `Error compiling transfer.ejs`);
     }
-    assert($('#transferForm').attr('method').toLowerCase() === 'post', 'The form is missing a method attribute.');
-    assert($('#transferForm').attr('action') === '/services/transfer' || $('#transferForm').attr('action') === '/transfer', 'The form is missing an action attribute.');
+    assert(
+      $('#transferForm').attr('action') === '/services/transfer' || $('#transferForm').attr('action') === '/transfer',
+      'The form is missing an action attribute.'
+    );
     assert(
       $('select')
         .first()
         .attr('id') === 'from',
-      'The first select is missing an id attribute.'
+      'The first select is missing an id attribute or it has the wrong value.'
     );
     assert(
       $('select')
         .first()
         .attr('name') === 'from',
-      'The first select is missing a name attribute.'
+      'The first select is missing a name attribute or it has the wrong value.'
     );
     assert(
       $('select')
         .last()
         .attr('id') === 'to',
-      'The second select is missing an id attribute.'
+      'The second select is missing an id attribute or it has the wrong value.'
     );
     assert(
       $('select')
         .last()
         .attr('name') === 'to',
-      'The second select is missing an name attribute.'
+      'The second select is missing an name attribute or it has the wrong value.'
     );
   });
 });
