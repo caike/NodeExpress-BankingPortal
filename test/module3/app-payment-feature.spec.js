@@ -11,34 +11,31 @@ describe('Payment Feature', () => {
   before(() => {
     getStack = routeStack('/payment', 'get') || routeStack('/services/payment', 'get');
     if (typeof getStack === 'undefined') {
-      getHandleSpy = { restore: () => { } };
+      getHandleSpy = { restore: () => {} };
     } else {
       getHandleSpy = sinon.spy(getStack, 'handle');
     }
     postStack = routeStack('/payment', 'post') || routeStack('/services/payment', 'post');
     if (typeof postStack === 'undefined') {
-      postHandleSpy = { restore: () => { } };
+      postHandleSpy = { restore: () => {} };
     } else {
       postHandleSpy = sinon.spy(postStack, 'handle');
     }
     writeFileSyncStub = sinon.stub(fs, 'writeFileSync');
   });
 
-  it('should contain payment route @app-payment-feature', () => {
+  it('should contain payment feature @app-payment-feature', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
 
-    assert(typeof getHandleSpy === 'function', 'The transfer get route may not exist.');
+    assert(typeof getHandleSpy === 'function', 'The payment get route may not exist.');
     const getReq = mockReq({});
     const getRes = mockRes();
     getHandleSpy(getReq, getRes);
 
     assert(getRes.render.called, 'The payment post route may have not been created.');
-    assert(
-      getRes.render.calledWithExactly('payment'),
-      '`res.render` is not being called with the correct arguments.'
-    );
+    assert(getRes.render.calledWithExactly('payment'), '`res.render` is not being called with the correct arguments.');
 
-    assert(typeof postHandleSpy === 'function', 'The transfer post route may not exist.');
+    assert(typeof postHandleSpy === 'function', 'The payment post route may not exist.');
     let accounts;
     try {
       accounts = appModule.__get__('accounts');
@@ -54,6 +51,9 @@ describe('Payment Feature', () => {
     postHandleSpy(postReq, postRes);
     const newAvailable = accounts.credit.available;
     const newBalance = accounts.credit.balance;
+
+    assert(/accountsJSON/.test(postStack.handle.toString()), 'The transfer post function does not include a `accountsJSON` const.');
+    assert(/JSON.stringify/.test(postStack.handle.toString()), 'The transfer post function does not include a call to `JSON.stringify`.');
 
     assert(postRes.render.called, 'The payment post route may have not been created.');
     assert(
