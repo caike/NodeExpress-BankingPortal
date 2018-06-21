@@ -18,7 +18,7 @@ describe('Move account routes', () => {
       assert(router !== undefined, 'Has the express router been added to `src/routes/accounts.js`?');
     }
     assert(typeof router === 'function', 'Has the router const been set to the express router function?');
-    assert(router.stack.length === 3, 'Were all three routes moved to accounts.js');
+    assert(router.stack.length === 3, 'Were all three routes moved to accounts.js and added to the router');
 
     const getRoutes = [];
     router.stack.forEach(routes => {

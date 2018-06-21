@@ -260,7 +260,7 @@ Still in `app.js` and in the function body of the post route, use the `writeFile
 
 ## 5.11 - Move Services Routes
 
-@routes-services-js-move-routes In `app.js` locate the transfer and payment post and get routes, cut and paste these routes in `services.js` below the require statements. Now in `accounts.js` update the routes to be part of the router by replacing `app.get` with `router.get`.
+@routes-services-js-move-routes In `app.js` locate the transfer and payment post and get routes, cut and paste these routes to `services.js` below the require statements. Now in `services.js` update the routes to be part of the router by replacing `app.get` with `router.get`.
 
 ## 5.12 - Export the Router
 

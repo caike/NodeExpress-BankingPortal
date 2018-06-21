@@ -20,6 +20,6 @@ describe('App uses services routes', () => {
   it('should contain app.use for services @app-use-account-routes', () => {
     assert(fs.existsSync(path.join(process.cwd(), 'src/routes/services.js')), 'The `src/routes/services.js` file does not exist.');
     const servicesRoutes = require(path.join(process.cwd(), 'src/routes/services.js'));
-    assert(useSpy.calledWithExactly('/services', servicesRoutes), 'Are you using your account routes?');
+    assert(useSpy.calledWithExactly('/services', servicesRoutes), 'Are you using your services routes?');
   });
 });
