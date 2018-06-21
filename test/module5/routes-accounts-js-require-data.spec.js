@@ -8,7 +8,7 @@ describe('Require `data.js`', () => {
     assert(fs.existsSync(path.join(process.cwd(), 'src/routes/accounts.js')), 'The `src/routes/accounts.js` file does not exist.');
     let accounts;
     try {
-      const accountsModule = rewire('../src/routes/accounts');
+      const accountsModule = rewire('../../src/routes/accounts');
       accounts = accountsModule.__get__('accounts');
     } catch (err) {
       assert(accounts !== undefined, 'Has the `data.js` been required and `accounts` const been created `src/routes/accounts.js`?');

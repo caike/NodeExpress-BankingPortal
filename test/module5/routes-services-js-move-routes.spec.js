@@ -10,7 +10,7 @@ describe('Move services routes', () => {
     let express;
     let router;
     try {
-      const servicesModule = rewire('../src/routes/services');
+      const servicesModule = rewire('../../src/routes/services');
       express = servicesModule.__get__('express');
       router = servicesModule.__get__('router');
     } catch (err) {

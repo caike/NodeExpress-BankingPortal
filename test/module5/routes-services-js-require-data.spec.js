@@ -9,7 +9,7 @@ describe('Require `data.js`', () => {
     let accounts;
     let writeJSON;
     try {
-      const servicesModule = rewire('../src/routes/services');
+      const servicesModule = rewire('../../src/routes/services');
       accounts = servicesModule.__get__('accounts');
       writeJSON = servicesModule.__get__('writeJSON');
     } catch (err) {

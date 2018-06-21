@@ -9,7 +9,7 @@ describe('Require Express and Create Router - accounts', () => {
     let express;
     let router;
     try {
-      const accountsModule = rewire('../src/routes/accounts');
+      const accountsModule = rewire('../../src/routes/accounts');
       express = accountsModule.__get__('express');
       router = accountsModule.__get__('router');
     } catch (err) {
