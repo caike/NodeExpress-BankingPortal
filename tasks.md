@@ -238,35 +238,35 @@ Still in `app.js` and in the function body of the post route, use the `writeFile
 
 @routes-accounts-js-export-router In `accounts.js` export the `router` using the `module.exports` syntax.
 
-## 5.6 - Require the Routes
-
-@app-require-account-routes Switch to `app.js` and require the `routes/accounts.js` file and store a reference to it in a `const` called `accountRoutes`.
-
-## 5.7 - Use the Routes
+## 5.6 - Use the Routes
 
 @app-use-account-routes In `app.js` where your account routes used to be, call the `use` function on `app` with two arguments. The first argument should be `/account` and the second is the `accountRoutes` const.
 
-## 5.8 - Create a Services Routes File
+## 5.7 - Create a Services Routes File
 
 @routes-services-js-create-file Create a new file called `services.js` in the directory `src/routes/`.
 
-## 5.9 - Require Express
+## 5.8 - Require Express
 
 @routes-services-js-require-express In the new `services.js` require the express framework and store a reference to it in a `const` called `express`.  Next, call the `express.Router()` function and store it in a `const` called `router`.
 
-## 5.10 - Require Data Library
+## 5.9 - Require Data Library
 
 @routes-services-js-require-data In `services.js` require `data.js` and at the same time use object destructing to create two constants called `accounts` and `writeJSON`.
 
-## 5.11 - Move Services Routes
+## 5.10 - Move Services Routes
 
 @routes-services-js-move-routes In `app.js` locate the transfer and payment post and get routes, cut and paste these routes to `services.js` below the require statements. Now in `services.js` update the routes to be part of the router by replacing `app.get` with `router.get`.
 
-## 5.12 - Export the Router
+## 5.11 - Export the Router
 
 @routes-services-js-export-router In `services.js` export the `router` using the `module.exports` syntax.
 
-## 5.13 - Require the Routes
+## 5.12 - Require account routes
+
+@app-require-account-routes Switch to `app.js` and require the `routes/accounts.js` file and store a reference to it in a `const` called `accountRoutes`.
+
+## 5.13 - Require services routes
 
 @app-require-services-routes Switch to `app.js` and require the `routes/services.js` file and store a reference to it in a `const` called `servicesRoutes`.
 

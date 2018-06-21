@@ -21,7 +21,7 @@ describe('Checking and Credit Routes', () => {
     }
   });
 
-  it('should contain the index route @app-get-index-route', () => {
+  it('should contain the credit and checking routes @app-get-index-route', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
     const req = mockReq();
     const res = mockRes();
