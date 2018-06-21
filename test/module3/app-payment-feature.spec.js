@@ -54,14 +54,12 @@ describe('Payment Feature', () => {
     const newAvailable = accounts.credit.available;
     const newBalance = accounts.credit.balance;
 
-    assert(
-      /accountsJSON/.test(postHandleOriginal.toString()),
-      'The payment post function does not include a `accountsJSON` const.'
-    );
-    assert(
-      /JSON.stringify/.test(postHandleOriginal.toString()),
-      'The payment post function does not include a call to `JSON.stringify`.'
-    );
+    if (fs.existsSync(path.join(process.cwd(), 'src/data.js'))) {
+      assert(/writeJSON/.test(postHandleOriginal.toString()), 'The transfer post function does not include a call to writeJSON.');
+    } else {
+      assert(/accountsJSON/.test(postHandleOriginal.toString()), 'The payment post function does not include a `accountsJSON` const.');
+      assert(/JSON.stringify/.test(postHandleOriginal.toString()), 'The payment post function does not include a call to `JSON.stringify`.');
+    }
 
     assert(postRes.render.called, 'The payment post route may have not been created.');
     assert(
