@@ -31,6 +31,10 @@ const hasParams = value => {
   return regExp.test(value);
 };
 const getAllStacks = (app, path, endpoints) => {
+  if (typeof app === 'undefined') {
+    return undefined;
+  }
+
   const regExp = /^\/\^\\\/(?:(:?[\w\\.-]*(?:\\\/:?[\w\\.-]*)*)|(\(\?:\(\[\^\\\/]\+\?\)\)))\\\/.*/;
   const stack = app.stack || (app._router && app._router.stack);
 

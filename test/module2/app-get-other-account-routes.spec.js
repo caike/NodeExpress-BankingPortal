@@ -28,7 +28,7 @@ describe('Checking and Credit Routes', () => {
 
     assert(typeof creditHandleSpy === 'function', 'The credit get route has not been created.');
     creditHandleSpy(req, res);
-    assert(res.render.called, 'The index route may have not been created.');
+    assert(res.render.called, 'The credit get route is not calling res.render.');
     assert(res.render.firstCall.args[0] === 'account', 'The index route does not seem to be rendering the `index` view.');
     assert(typeof res.render.firstCall.args[1] === 'object', 'res.render maybe missing arguments');
     assert(
@@ -36,9 +36,9 @@ describe('Checking and Credit Routes', () => {
       'The index route maybe missing an object with a account key value pair.'
     );
 
-    assert(typeof checkingHandleSpy === 'function', 'The credit get route has not been created.');
+    assert(typeof checkingHandleSpy === 'function', 'The checking get route has not been created.');
     checkingHandleSpy(req, res);
-    assert(res.render.called, 'The index route may have not been created.');
+    assert(res.render.called, 'The checking get route is not calling res.render.');
     assert(res.render.firstCall.args[0] === 'account', 'The index route does not seem to be rendering the `index` view.');
     assert(typeof res.render.firstCall.args[1] === 'object', 'res.render maybe missing arguments');
     assert(

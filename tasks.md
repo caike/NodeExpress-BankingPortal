@@ -79,7 +79,7 @@ In order to see your changes in a browser, you can run `npm start` to start the 
 
 ## 2.4 - Update the Index View
 
-@index-ejs-update-view In `index.ejs` and after the ejs markup that displays the `title`, add the ejs markup to include the `summary` view for each account in the `accounts` variable, savings, checking, and credit. **Hint: you will have three include statements(`<%- %>`), each `include` function will be passed a different account, i.e `{ account: accounts.checking }`.**
+@index-ejs-update-view In `index.ejs` and after the container div, add the ejs markup to include the `summary` view for each account in the `accounts` variable, savings, checking, and credit. **Hint: you will have three include statements(`<%- %>`), each `include` function will be passed a different account, i.e `{ account: accounts.checking }`.**
 
 ## 2.5 - Create the Savings Account Route
 
