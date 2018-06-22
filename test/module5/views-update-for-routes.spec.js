@@ -38,10 +38,10 @@ describe('Update views', () => {
       assert(err.message.indexOf('compiling ejs') < -1, `${errorMessage} compiling index.ejs`);
     }
 
-    assert(typeof $index('a')['1'] !== 'undefined', 'The index transfer file may not have content.');
-    assert($index('a')['1'].attribs.href === '/services/transfer', 'The index transfer link has not been updated.');
-    assert($summary('a').attr('href') === '/account/<%= account.unique_name %>', 'The index transfer link has not been updated.');
-    assert($transfer('#transferForm').attr('action') === '/services/transfer', 'The form action attribute has not been updated.');
-    assert($payment('#paymentForm').attr('action') === '/services/payment', 'The form action attribute has not been updated.');
+    assert(typeof $index('a')['1'] !== 'undefined', 'The transfer link has not been updated');
+    assert($index('a')['1'].attribs.href === '/services/transfer', 'The `index.ejs` transfer link has not been updated');
+    assert($summary('a').attr('href') === '/account/<%= account.unique_name %>', 'The `index.ejs` transfer link has not been updated');
+    assert($transfer('#transferForm').attr('action') === '/services/transfer', 'The payment form action attribute has not been updated.');
+    assert($payment('#paymentForm').attr('action') === '/services/payment', 'The transfer form action attribute has not been updated.');
   });
 });

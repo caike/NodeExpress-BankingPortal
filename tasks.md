@@ -8,7 +8,7 @@ Run the following command from root folder of the cloned project to install all 
 
 ## Verify Setup
 
-In order to verify that everything is setup correctly, run the following command, which should show you the failing tests. This is good! We’ll be fixing these tests once we jump into the build step.
+In order to verify that everything is setup correctly, run the following command, which should show you the failing tests. This is good! We'll be fixing these tests once we jump into the build step.
 
 `npm run test`
 
@@ -51,13 +51,13 @@ In order to see your changes in a browser, you can run `npm start` to start the 
 - Include `header.ejs` **Hint: <%- %>**
 - Add a `div` element with a class of `container`.
 - In the container div display the value of the `title` key in an `h1` element. **Hint: <%= %>**
-- Add an anchor element below the `h1` that points to the `/profile` URL path, and has the text content “Profile”.
+- Add an anchor element below the `h1` that points to the `/profile` URL path, and has the text content `Profile`.
 - Below the container div add a line break and another anchor element that points to the `/transfer` URL path with the text content `Transfer`.
 - Include `footer.ejs` **Hint: <%- %>**
 
 ## 1.7 - Create the Index Route
 
-@app-get-index-route In `app.js` create a `get` route that points at the root URL path ‘/‘. Render the `index` view (created in the next step) and pass an object with a single key value pair, `title: 'Index'`.
+@app-get-index-route In `app.js` create a `get` route that points at the root URL path '/'. Render the `index` view (created in the next step) and pass an object with a single key value pair, `title: 'Index'`.
 
 ## 1.8 - Start Server
 
@@ -67,15 +67,15 @@ In order to see your changes in a browser, you can run `npm start` to start the 
 
 ## 2.1 - Read Account Data
 
-@app-read-account-data In `app.js` above the index route, use the `readFileSync` function of the built-in `fs` library to read the contents of the file located at `src/json/accounts.json`. Declare a `const` called `accountData` to store the contents of the file. `accountData` now contains JSON, use `JSON.parse` to convert it to a javascript object. Declare a `const` called `accounts` to store this javascript object.
+@app-read-account-data In `app.js` above the index route, use the `readFileSync` function of the built-in `fs` library to read the contents of the file located at `src/json/accounts.json`. Declare a `const` called `accountData` to store the contents of the file. `accountData` now contains JSON, use `JSON.parse` to convert it to a javascript object. Declare a `const` called `accounts` to store this javascript object. **Note: read the file with the `UTF8` encoding.**
 
 ## 2.2 - Read User Data
 
-@app-read-user-data In `app.js` near the index route, use the `readFileSync` function of the built-in `fs` library to read the contents of the file located at `src/json/users.json`. Declare a `const` called `userData` to store the contents of the file. `userData` now contains JSON, use `JSON.parse` to convert it to a javascript object. Declare a `const` called `users` to store this javascript object.
+@app-read-user-data In `app.js` near the index route, use the `readFileSync` function of the built-in `fs` library to read the contents of the file located at `src/json/users.json`. Declare a `const` called `userData` to store the contents of the file. `userData` now contains JSON, use `JSON.parse` to convert it to a javascript object. Declare a `const` called `users` to store this javascript object. **Note: read the file with the `UTF8` encoding.**
 
 ## 2.3 - Update the Index Route
 
-@app-update-index-route In `app.js` update the object passed to the existing index route. The `title` should be “Accounts Summary”. A new key value pair should be added, `accounts: accounts`.
+@app-update-index-route In `app.js` update the object passed to the existing index route. The `title` should be `Account Summary`. A new key value pair should be added, `accounts: accounts`.
 
 ## 2.4 - Update the Index View
 
@@ -107,7 +107,7 @@ In order to see your changes in a browser, you can run `npm start` to start the 
 
 - Include `header.ejs` **Hint: <%- %>**
 - Add an `h1` element with the text content `Profile`
-- Add a `div` element below the `h1` that displays each detail of the `user` object on a new line, name, username, phone, email, and address.
+- Add a `div` element below the `h1` that displays each detail of the `user` object (passed to the view in the next step) on a new line. The details are user.name, user.username, user.phone, user.email, and user.address.
 - Below the `div` add a line break, then an anchor element that points to the root URL path and has the text content `Back to Account Summary`.
 - Include `footer.ejs` **Hint: <%- %>**
 
@@ -139,40 +139,50 @@ In order to see your changes in a browser, you can run `npm start` to start the 
 
 @app-post-transfer-route Switch back to `app.js` and create a `post` route that points to the `/transfer` URL path. We will fill in the body of the function for this route in the next few steps.
 
-## 3.5 - Calculate New Balances
+## 3.5 - Calculate and Set the From Balances
 
 @app-post-transfer-route-from-balance Still in `app.js` and in the function body of the post route we are going to calculate the new balances for the account we are transferring from.
 
-We have several values that have been entered into the HTML form in `transfer.ejs`. Upon form submission the request body will contain `from`, `to`, and `amount`. Current balances are stored in the `accounts` object in this form `accounts[‘savings’].balance`. Using these values calculate the new balance of the account we are transferring from.
+We have several values that have been entered into the HTML form in `transfer.ejs`. Upon form submission the request body will contain `from`, `to`, and `amount`. Current account balances are stored in the `accounts` object. As an example to access the current balance for the savings account use `accounts["savings"].balance`. Using these values, calculate the new balance of the account we are transferring **from**. Then set the balance to that amount.
 
-## 3.6 - Calculate New Balances
+## 3.6 - Calculate and Set the From Balances
 
 @app-post-transfer-route-to-balance Still in `app.js` and in the function body of the post route we are going to calculate the new balances for the account we are transferring to.
 
-We have several values that have been entered into the HTML form in `transfer.ejs`. Upon form submission the request body will contain `from`, `to`, and `amount`. Current balances are stored in the `accounts` object in this form `accounts[‘checking’].balance`. Using these values calculate the new balance of the account we are transferring from. **Hint: you will need to use `parseInt()`**
+We have several values that have been entered into the HTML form in `transfer.ejs`. Upon form submission the request body will contain `from`, `to`, and `amount`. Current account balances are stored in the `accounts` object. As an example to access the current balance for the savings account use `accounts["savings"].balance`. Using these values, calculate the new balance of the account we are transferring **to**. Then set the balance to that amount. **Hint: you will need to use `parseInt()`**
 
 ## 3.7 - Convert Account Data to JSON
 
-@app-post-transfer-route-write-json Still in `app.js` and in the function body of the post route, convert the `accounts` javascript object to JSON using the stringify function some this JSON in a variable called `accountsJSON`. **Hint: set the replacer argument to `null` and the space argument to 4 of the stringify function for well formatted JSON.**
+@app-post-transfer-route-write-json Still in `app.js` and in the function body of the post route, convert the `accounts` javascript object to a string using the `JSON.stringify` function save this string in a variable called `accountsJSON`.
 
 ## 3.8 - Write Account Data to JSON file
 
-Still in `app.js` and in the function body of the post route, use the `writeFileSync` function of the built-in `fs` library to write the variable `accountsJSON` to the file located at `src/json/accounts.json`. If at any point `accounts.json` gets overwritten copy the JSON from `account_backup.json`.
+Still in `app.js` and in the function body of the post route, use the `writeFileSync` function of the built-in `fs` library to write the variable `accountsJSON` to the file located at `json/accounts.json`.
+
+Notes:
+
+- If at any point `accounts.json` gets overwritten and you would like the original back copy the JSON from `account_backup.json` to `account.json`
+- Specify the absolute file path using `path.join` & `__dirname`
+- Write the file with the `UTF8` encoding.
 
 ## 3.9 - Redirect with a Message
 
 @app-post-transfer-route-redirect Still in `app.js` and in the function body of the post route, render the `transfer` view and pass an object with the following key value pair:
 
-- `message: “Transfer Completed”`
+- `message: "Transfer Completed"`
 
 ## 3.10 - Add Payment Feature
 
 @app-payment-feature The payment feature of the application is similar to the transfer feature. Add this new feature using this general outline of the steps:
 
-- Near your existing routes in `app.js` create post and get routed with a URL path of `/payment`. The get route should render the `payment` view.
-- In the body of the post route function subtract `req.body.amount` from `accounts[‘credit’].balance` and add it to `accounts[‘credit’].available` (remember to use `parseInt()` when adding).
-- Convert the javascript object to JSON and write it to a file.
-- In the body of the post route function render the `payment` view and pass an object with the following key value pair, `message: “Payment Successful”`
+- Near your existing routes in `app.js` create a get route with a URL path of `/payment` that renders the `payment` view.
+- Below the payment get route create a post route with a URL path of `/payment` and an empty function.
+- In the body of the payment post route function:
+  - Subtract `req.body.amount` from `accounts.credit.balance` and save it back to `accounts.credit.balance`
+  - Add `req.body.amount` to `accounts.credit.available` and save it back to `accounts.credit.available` remember to use `parseInt()` on both values when adding.
+  - Convert the `accounts` javascript object to a JSON string and save it to a variable called `accountsJSON`
+  - Write `accountsJSON` to a file. **Note: write the file with the `UTF8` encoding.**
+  - Render the `payment` view and pass an object with the following key value pair, `{ message: "Payment Successful", account: accounts.credit }`
 
 # Module 04 - Creating a Data Access Library
 
@@ -206,7 +216,7 @@ Still in `app.js` and in the function body of the post route, use the `writeFile
 
 ## 4.8 - Require Data Library
 
-@app-js-require-data-js Back In `app.js` require `data.js` and at the same time use object destructing to create three constants for `accounts`, `users`, and `writeJSON`. Remove the lines in `app.js` that create the `accountData`, `accounts`, `userData`, and `users` consts. `accounts`, `users`, and the `writeJSON` function are now brought in by the require statement.
+@app-js-require-data-js Back In `app.js` require `data.js` and at the same time use object destructing to create three constants for `accounts`, `users`, and `writeJSON`. Remove the lines in `app.js` that create the `accountData`, `accounts`, `userData`, and `users` consts. `accounts`, `users`, and the `writeJSON` function are now brought in by the require statement. **Note: use relative paths to require the data module `'./data'`**
 
 ## 4.9 - Function Call Transfer
 
@@ -228,7 +238,7 @@ Still in `app.js` and in the function body of the post route, use the `writeFile
 
 ## 5.3 - Require Data Library
 
-@routes-accounts-js-require-data In `accounts.js` require `data.js` and at the same time use object destructing to create one constant called `accounts`.
+@routes-accounts-js-require-data In `accounts.js` require `data.js` and at the same time use object destructuring to create one constant called `accounts`. **Note: use relative paths to require the data module. Use `'../data'` since it is one level up.**
 
 ## 5.4 - Move Account Routes
 
@@ -252,7 +262,7 @@ Still in `app.js` and in the function body of the post route, use the `writeFile
 
 ## 5.9 - Require Data Library
 
-@routes-services-js-require-data In `services.js` require `data.js` and at the same time use object destructing to create two constants called `accounts` and `writeJSON`.
+@routes-services-js-require-data In `services.js` require `data.js` and at the same time use object destructing to create two constants called `accounts` and `writeJSON`. **Note: use relative paths to require the data module. Use `'../data'` since it is one level up.**
 
 ## 5.10 - Move Services Routes
 

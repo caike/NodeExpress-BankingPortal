@@ -3,7 +3,7 @@ const path = require('path');
 const rewire = require('rewire');
 
 describe('Require `data.js` - accounts', () => {
-  it('should contain `accounts` const @app-require-express-const-app', () => {
+  it('should contain `accounts` const @routes-accounts-js-require-data', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
     assert(fs.existsSync(path.join(process.cwd(), 'src/routes/accounts.js')), 'The `src/routes/accounts.js` file does not exist.');
     let accounts;

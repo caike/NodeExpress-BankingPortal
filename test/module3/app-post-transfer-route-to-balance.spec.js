@@ -3,6 +3,7 @@ const fs = require('fs');
 describe('Transfer post route to balance', () => {
   let stack;
   let handleSpy;
+  let handleOriginal;
   let writeFileSyncStub;
 
   before(() => {
@@ -12,6 +13,7 @@ describe('Transfer post route to balance', () => {
         restore: () => { }
       };
     } else {
+      handleOriginal = stack.handle;
       handleSpy = sinon.spy(stack, 'handle');
     }
     writeFileSyncStub = sinon.stub(fs, 'writeFileSync');
@@ -31,6 +33,8 @@ describe('Transfer post route to balance', () => {
 
     const req = mockReq(request);
     const res = mockRes();
+
+    assert(handleOriginal.toString().match(/parseInt/).length >= 1, 'Make sure to use parseInt.');
 
     const currentBalance = accounts[request.body.to].balance;
     handleSpy(req, res);

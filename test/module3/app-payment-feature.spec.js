@@ -34,8 +34,8 @@ describe('Payment Feature', () => {
     const getRes = mockRes();
     getHandleSpy(getReq, getRes);
 
-    assert(getRes.render.called, 'The payment post route may have not been created.');
-    assert(getRes.render.calledWithExactly('payment'), '`res.render` is not being called with the correct arguments.');
+    assert(getRes.render.called, 'The payment get route may have not been created.');
+    assert(getRes.render.calledWithExactly('payment', sinon.match.object), '`res.render` is not being called with the correct arguments.');
 
     assert(typeof postHandleSpy === 'function', 'The payment post route may not exist.');
     let accounts;
@@ -59,13 +59,12 @@ describe('Payment Feature', () => {
     } else {
       assert(/accountsJSON/.test(postHandleOriginal.toString()), 'The payment post function does not include a `accountsJSON` const.');
       assert(/JSON.stringify/.test(postHandleOriginal.toString()), 'The payment post function does not include a call to `JSON.stringify`.');
+      assert(postHandleOriginal.toString().match(/parseInt/).length >= 1, 'Make sure to use parseInt.');
     }
 
     assert(postRes.render.called, 'The payment post route may have not been created.');
     assert(
-      postRes.render.calledWithExactly('payment', {
-        message: 'Payment Successful'
-      }),
+      postRes.render.calledWithExactly('payment', sinon.match.object),
       '`res.render` is not being called with the correct arguments.'
     );
     assert(
