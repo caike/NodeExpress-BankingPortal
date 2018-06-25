@@ -18,7 +18,7 @@ describe('Transfer post route write JSON', () => {
     writeFileSyncStub = sinon.stub(fs, 'writeFileSync');
   });
 
-  it('should contain the index route @app-get-index-route', () => {
+  it('should contain the index route @app-post-transfer-route-write-json', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
     const request = {
       body: {

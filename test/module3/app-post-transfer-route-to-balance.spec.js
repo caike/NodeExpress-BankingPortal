@@ -19,7 +19,7 @@ describe('Transfer post route to balance', () => {
     writeFileSyncStub = sinon.stub(fs, 'writeFileSync');
   });
 
-  it('should calculate `to` balance @app-post-transfer-route-from-balance', () => {
+  it('should calculate `to` balance @app-post-transfer-route-to-balance', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
     assert(typeof handleSpy === 'function', 'The transfer post route may not exist.');
     const request = { body: { from: 'savings', to: 'checking', amount: 100 } };

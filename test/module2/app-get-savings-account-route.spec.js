@@ -15,7 +15,7 @@ describe('Savings Route', () => {
     }
   });
 
-  it('should contain the savings route @app-get-index-route', () => {
+  it('should contain the savings route @app-get-savings-account-route', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
     const req = mockReq();
     const res = mockRes();

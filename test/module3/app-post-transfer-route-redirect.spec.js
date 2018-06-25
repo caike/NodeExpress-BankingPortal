@@ -17,7 +17,7 @@ describe('Transfer post route redirect', () => {
     writeFileSyncStub = sinon.stub(fs, 'writeFileSync');
   });
 
-  it('should contain the transfer route @app-get-index-route', () => {
+  it('should contain the transfer route @app-post-transfer-route-redirect', () => {
     assert(typeof app === 'function', '`app` const has not been created in `app.js`.');
     const request = {
       body: {
