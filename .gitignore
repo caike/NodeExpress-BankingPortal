@@ -65,3 +65,5 @@ typings/
 
 # VS Code
 .vscode/
+
+*swp

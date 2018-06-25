@@ -33,12 +33,18 @@ In order to see your changes in a browser, you can run `npm start` to start the 
 
 @app-set-views-directory-engine Still in app.js, use the `set` function of your newly created `app` to configure the directory where our `views` can be found. Using the same `set` function, set the `view engine` to `ejs`. **Hint: `path.join()` & `__dirname`**
 
+**Carlos comment #1:** Just by reading the directions it wasn't clear to me at first the `views` directory is called `views`. Perhaps we can be a little more explicit and mention that ? I think this is also the default directory ejs looks for, so it might not be needed unless you wanted to teach them to be explicit.
+
+**Carlos comment #2:** My personal approach to starting a new Express app from scratch is to start with "the simplest thing that could possible work". This usually means not doing any templating or asset config until running the server for the first time. After the two `require` statements, I usually jump straight into writing a simple `get("/")` end point which returns hardcoded data (like a simple _"Hello from express"_) using something like `response.json()` or even just a 200 status code with `response.sendStatus()`. This is to make sure the few lines of code I wrote (the `require` statements and whatnot) are correct before moving on. 
+
 ## 1.4 - Configure the Static Directory
 
 @app-use-express-static All of our CSS/JS for the client-side is found in the `public` directory. We need to point express to `public`.
 
 - In app.js call the `use` function of `app` with a call to the `express.static()` function as the only parameter.
 - `express.static()` should be passed the full path to the `public` directory. **Hint: `path.join()` & `__dirname`**
+
+**Carlos comment:** Similar to how the `views` directory works, I believe the `"public"` directory is the default when using `express.static()` so passing _"public"_ as argument might not be necessary. Not sure if you were going for explicit, but just wanted to mention.
 
 ## 1.5 - Create the Index View File
 
