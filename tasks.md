@@ -264,6 +264,8 @@ Notes:
 
 @app-use-account-routes In `app.js` where your account routes used to be, call the `use` function on `app` with two arguments. The first argument should be `/account` and the second is the `accountRoutes` const.
 
+**Carlos comments:** I believe the instruction to `require` and create the `accountRoutes` variable should come before this task. As is, the tests break because there is no `accountRoutes` variable yet.
+
 ## 5.7 - Create a Services Routes File
 
 @routes-services-js-create-file Create a new file called `services.js` in the directory `src/routes/`.
