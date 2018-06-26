@@ -5,9 +5,9 @@
   <a href="/profile">Profile</a>
 </div>
 
-<%- include(accounts.savings) %>
-<%- include(accounts.checking) %>
-<%- include(accounts.credit) %>
+<%- include("summary", { account: accounts.checking }) %>
+<%- include("summary", { account: accounts.savings }) %>
+<%- include("summary", { account: accounts.credit }) %>
 
 <br/>
 

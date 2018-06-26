@@ -141,15 +141,21 @@ In order to see your changes in a browser, you can run `npm start` to start the 
 - Add a `name` and `id` attribute with a value of `from` to the first select.
 - Add a `name` and `id` attribute with a value of `to` to the second select.
 
+**Carlos comment:** Should we make the *POST* requirement stand out a little bit more on the first step ? Something like "Add the necessary attributes to the `transferForm` so that it issues a `POST` form request to the `/transfer` route."
+
 ## 3.4 - Create the Transfer POST Route
 
 @app-post-transfer-route Switch back to `app.js` and create a `post` route that points to the `/transfer` URL path. We will fill in the body of the function for this route in the next few steps.
+
+**Carlos comment:** I really like the flow on this one! Going from _get route -> get form -> post route_ feels very similar to coding in real life.
 
 ## 3.5 - Calculate and Set the From Balances
 
 @app-post-transfer-route-from-balance Still in `app.js` and in the function body of the post route we are going to calculate the new balances for the account we are transferring from.
 
 We have several values that have been entered into the HTML form in `transfer.ejs`. Upon form submission the request body will contain `from`, `to`, and `amount`. Current account balances are stored in the `accounts` object. As an example to access the current balance for the savings account use `accounts["savings"].balance`. Using these values, calculate the new balance of the account we are transferring **from**. Then set the balance to that amount.
+
+**Carlos comment:** This is the first step which made me feel a little lost. By reading the instructions I can understand all the values I'm getting from the form submission but I'm confused as to what exactly I'm supposed to code. Maybe this can be broken down into smaller steps, or perhaps be a little more descriptive towards what we want students to do - kind of like how 3.10 is written.
 
 ## 3.6 - Calculate and Set the From Balances
 
