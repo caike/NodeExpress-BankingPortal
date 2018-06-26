@@ -21,7 +21,7 @@ router.post("/transfer", (req, res) => {
 });
 
 router.get("/payment", (req, res) => {
-  res.render("payment");
+  res.render("payment", {accounts: accounts.credit});
 });
 
 router.post("/payment", (req, res) => {
