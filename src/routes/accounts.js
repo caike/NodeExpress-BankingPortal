@@ -3,11 +3,6 @@ const router = express.Router();
 
 const { accounts } = require("./../data.js");
 
-
-router.get("/", (req, res) => {
-  res.render("index", { title: "Account Summary", accounts });
-});
-
 router.get("/savings", (req, res) => {
   res.render("account", { account: accounts.savings });
 });
@@ -18,10 +13,6 @@ router.get("/checking", (req, res) => {
 
 router.get("/credit", (req, res) => {
   res.render("account", { account: accounts.credit });
-});
-
-router.get("/profile", (req, res) => {
-  res.render("profile", { user: users[0] });
 });
 
 module.exports = router;
